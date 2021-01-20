@@ -3,7 +3,7 @@
 # type: photo
 title: Lorem Ipsum
 date: 2021-01-20
-categories: 일상
+categories: test
 # link: http://www.google.com/
 tags: post
 # description: 상세설명。
