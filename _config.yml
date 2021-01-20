@@ -79,7 +79,7 @@ plugins:
 favicon: /assets/favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Jekyll, NexT"
+keywords: "슬기로운 개발생활, 슬기로운, 개발, 개발생활, ddd05, seongjun lee,sjL"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -87,7 +87,7 @@ keywords: "Jekyll, NexT"
 rss:
 
 # Specify the date when the site was setup
-#since: 2015
+since: 2021
 
 # icon between year and author @Footer
 authoricon: heart
@@ -214,7 +214,8 @@ font:
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 #social:
-  #LinkLabel: Link
+  LinkLabel: Link
+  GitHub: https://github.com/ddd05
 
 
 # Social Links Icons
@@ -233,7 +234,7 @@ social_icons:
 
 # Sidebar Avatar
 # in directory: /assets/images/avatar.gif
-#avatar:
+avatar: /assets/images/default_avatar.png
 
 
 # Table Of Contents in the Sidebar
