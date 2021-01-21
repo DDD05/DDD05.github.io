@@ -43,15 +43,15 @@ description: 'Front-end : Vue.js & Back-end : contentful(CMS) & Deploy : Nutify'
 -   워드프레스 사용자들은 익숙하게 사용 가능
 -   여튼 직관적이여서 편해 보이며 사용 오픈소스가 많아보임
 
-![contentful](Untitled00.png)
+![contentful](/assets/post-img/make-dev-blog/Untitled00.png)
 
 컨텐츠 관리하는 화면, Status를 통해 글을 publish 할지 안할지 결정 가능
 
-![contentful](Untitled01.png)
+![contentful](/assets/post-img/make-dev-blog/Untitled01.png)
 
 글을 작성할때 필요한 템플릿을 커스텀하여 결정 가능
 
-![contentful](Untitled02.png)
+![contentful](/assets/post-img/make-dev-blog/Untitled02.png)
 
 컨텐츠를 작서하는 화면으로 `Mark dowm`을 지원하여 언어만 알고있다면 편하게 글 쓰기 가능, 또 그림등도 업로드후 URI를 통해 표현가능
 
@@ -134,7 +134,7 @@ Contentful plugin을 설치한 후 import만 하면된다.
 
     ```
 
-![contentful](Untitled03.png)
+![contentful](/assets/post-img/make-dev-blog/Untitled03.png)
 
 <br>
 
@@ -162,7 +162,7 @@ GitHub, GitLab 계정 연동 및 **쉬운 호스팅을 제공, 지속적 배포,
 
 2. 호스팅 할려는 프로젝트 선택
 
-    ![contentful](Untitled04.png)
+    ![contentful](/assets/post-img/make-dev-blog/Untitled04.png)
 
 3. 브런치 선택 후 빌드되는 경로 선택
 
@@ -174,4 +174,4 @@ GitHub, GitLab 계정 연동 및 **쉬운 호스팅을 제공, 지속적 배포,
     -   현재 배포 상테를 체크할 수 있음
     -   github의 hook 연결과 contentful hook 연결을 통해 빌드 자동화 가능
 
-    ![contentful](Untitled05.png)
+    ![contentful](/assets/post-img/make-dev-blog/Untitled05.png)

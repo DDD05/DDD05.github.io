@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-21T11:11:01+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">Vue와 CMS를 이용하여 나의 개발 블로그 만들기</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/" rel="alternate" type="text/html" title="Vue와 CMS를 이용하여 나의 개발 블로그 만들기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-21T12:19:16+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">Vue와 CMS를 이용하여 나의 개발 블로그 만들기</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/" rel="alternate" type="text/html" title="Vue와 CMS를 이용하여 나의 개발 블로그 만들기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/">&lt;blockquote&gt;
   &lt;p&gt;개발 블로그 만들기&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -46,15 +46,15 @@
   &lt;li&gt;여튼 직관적이여서 편해 보이며 사용 오픈소스가 많아보임&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;Untitled00.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post-img/make-dev-blog/Untitled00.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;컨텐츠 관리하는 화면, Status를 통해 글을 publish 할지 안할지 결정 가능&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;Untitled01.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post-img/make-dev-blog/Untitled01.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;글을 작성할때 필요한 템플릿을 커스텀하여 결정 가능&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;Untitled02.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post-img/make-dev-blog/Untitled02.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;컨텐츠를 작서하는 화면으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;Mark dowm&lt;/code&gt;을 지원하여 언어만 알고있다면 편하게 글 쓰기 가능, 또 그림등도 업로드후 URI를 통해 표현가능&lt;/p&gt;
 
@@ -139,7 +139,7 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;Untitled03.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post-img/make-dev-blog/Untitled03.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -172,7 +172,7 @@
   &lt;li&gt;
     &lt;p&gt;호스팅 할려는 프로젝트 선택&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;Untitled04.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/assets/post-img/make-dev-blog/Untitled04.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;브런치 선택 후 빌드되는 경로 선택&lt;/p&gt;
@@ -188,6 +188,6 @@
       &lt;li&gt;github의 hook 연결과 contentful hook 연결을 통해 빌드 자동화 가능&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;p&gt;&lt;img src=&quot;Untitled05.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/assets/post-img/make-dev-blog/Untitled05.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;</content><author><name>Seongjun Lee</name></author><category term="Vue.js" /><category term="CMS" /><category term="Nutify" /><category term="blog" /><summary type="html">개발 블로그 만들기</summary></entry></feed>
