@@ -1,25 +1,193 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-20T20:55:01+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">Lorem Ipsum</title><link href="http://localhost:4000/test/2021/01/20/lorem-ipsum/" rel="alternate" type="text/html" title="Lorem Ipsum" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>http://localhost:4000/test/2021/01/20/lorem-ipsum</id><content type="html" xml:base="http://localhost:4000/test/2021/01/20/lorem-ipsum/">&lt;blockquote&gt;
-  &lt;p&gt;“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…“&lt;br /&gt;
-“There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain…”&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-21T11:11:01+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">Vue와 CMS를 이용하여 나의 개발 블로그 만들기</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/" rel="alternate" type="text/html" title="Vue와 CMS를 이용하여 나의 개발 블로그 만들기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/">&lt;blockquote&gt;
+  &lt;p&gt;개발 블로그 만들기&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&quot;what-is-lorem-ipsum&quot;&gt;What is Lorem Ipsum?&lt;/h1&gt;
+&lt;p&gt;경력은 쌓여가는데 슬프게도 개발 실력이 쌓이지 않는 불안감에서 시작하게되었고, 요즘 개발자들 사이에서 개인 블로그를 만든는 것이 유행이라는 말에 바로 만들어 보기로했다.😁&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Lorem Ipsum&lt;/strong&gt; is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
+&lt;p&gt;개발하면서 고민하거나 겪었던 이슈를 기록하고 나와 다른 개발자들에게 도움이 될 수 있는 공간을 만들고 싶었고, 마지막으로 나의 커리어를 어필하는 용도로 블로그가 매우 적합하다고 생각했다.&lt;/p&gt;
 
-&lt;p&gt;Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&lt;/p&gt;
+&lt;h1 id=&quot;기술-스택-&quot;&gt;기술 스택 🔨&lt;/h1&gt;
 
-&lt;h1 id=&quot;where-does-it-come-from&quot;&gt;Where does it come from?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Back, Contentful of CMS&lt;/li&gt;
+  &lt;li&gt;Front, Vue.js&lt;/li&gt;
+  &lt;li&gt;Deploy, Nutify&lt;/li&gt;
+  &lt;li&gt;Git&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of “de Finibus Bonorum et Malorum” (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, “Lorem ipsum dolor sit amet..”, comes from a line in section 1.10.32.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;환경셋팅이 쉬운 기술을 이용하여 개발시간을 최대로 줄임 ( 저는 기술을 공부하고 사용한다고 5시간이나 걸림;;; )&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from “de Finibus Bonorum et Malorum” by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.&lt;/p&gt;
+&lt;h2 id=&quot;cms란&quot;&gt;CMS란?&lt;/h2&gt;
 
-&lt;h1 id=&quot;why-do-we-use-it&quot;&gt;Why do we use it?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Contents Management System, 콘텐츠 관리 시스템&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&lt;/p&gt;
+&lt;h3 id=&quot;사용이유&quot;&gt;사용이유&lt;/h3&gt;
 
-&lt;h1 id=&quot;where-can-i-get-some&quot;&gt;Where can I get some?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Back&lt;/code&gt;이 필요없이 &lt;code class=&quot;highlighter-rouge&quot;&gt;프론트 &amp;amp; 디자인&lt;/code&gt;으로만 웹 사이트를 만들어 낼 수 있음.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;오픈소스라서 무료&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;기능 및 속도가 좋음&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;편하게 컨텐츠를 관리 가능&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn’t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.&lt;/p&gt;</content><author><name>Seongjun Lee</name></author><category term="post" /><summary type="html">“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…“ “There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain…”</summary></entry></feed>
+&lt;blockquote&gt;
+  &lt;p&gt;간단한 회사 홈페이지나 개인 홈페이지, 블로그 등은 CMS로 간단하게 만들 수 있음.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;contentful-api&quot;&gt;Contentful api&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CMS의 오픈소스 중 하나 5,000 엔티티까지 무료&lt;/li&gt;
+  &lt;li&gt;워드프레스 사용자들은 익숙하게 사용 가능&lt;/li&gt;
+  &lt;li&gt;여튼 직관적이여서 편해 보이며 사용 오픈소스가 많아보임&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;Untitled00.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;컨텐츠 관리하는 화면, Status를 통해 글을 publish 할지 안할지 결정 가능&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;Untitled01.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;글을 작성할때 필요한 템플릿을 커스텀하여 결정 가능&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;Untitled02.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;컨텐츠를 작서하는 화면으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;Mark dowm&lt;/code&gt;을 지원하여 언어만 알고있다면 편하게 글 쓰기 가능, 또 그림등도 업로드후 URI를 통해 표현가능&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;화면만들기-&quot;&gt;화면만들기 👨‍💻&lt;/h1&gt;
+
+&lt;p&gt;Vue.js를 이용하여 프론트를 만들어보았다. UI 라이브러리는 &lt;a href=&quot;https://vuetifyjs.com/en/&quot;&gt;Vuetify&lt;/a&gt;를 이용하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;작업-순서&quot;&gt;작업 순서&lt;/h2&gt;
+
+&lt;p&gt;Contentful plugin을 설치한 후 import만 하면된다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;vue 프로젝트를 생성&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; vue create &lt;span class=&quot;s2&quot;&gt;&quot;PROJECT_NAME&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;plugin을 설치&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; npm install contentfull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;설치한 플러그인을 import&lt;/p&gt;
+
+    &lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;// ./plugins/contentful.js&lt;/span&gt;
+
+ &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contentful&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'contentful'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;// use default environment config for convenience&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;// these will be set via `env` property in nuxt.config.js&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ 	&lt;span class=&quot;na&quot;&gt;space&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VUE_APP_CTF_SPACE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Space id&lt;/span&gt;
+ 	&lt;span class=&quot;na&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VUE_APP_CTF_CDA_ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Token&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+ &lt;span class=&quot;c1&quot;&gt;// export `createClient` to use it in page components&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ 	&lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ 		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contentful&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ 	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;// app.vue &amp;lt;script&amp;gt;&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contentful&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@/plugins/contentful.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// import contentful&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contentful&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// return createClient()&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;App&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;na&quot;&gt;components&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;appbar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;vfooter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;vview&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;setPosts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;setPosts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// vuex의 state.posts에 넣는 메소드&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;// 프로젝트를 실행 할 때 모든 컨텐츠를 가지고와서 정적으로 사용할 예정&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;// Vuex의 state.posts 변수에 담김&lt;/span&gt;
+   &lt;span class=&quot;nx&quot;&gt;mounted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getEntries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setPosts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;Untitled03.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;배포하기&quot;&gt;배포하기&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Nutify&lt;/code&gt; 를 이용해서 배포.&lt;/p&gt;
+
+&lt;h2 id=&quot;nutify란&quot;&gt;Nutify란?&lt;/h2&gt;
+
+&lt;p&gt;GitHub, GitLab 계정 연동 및 &lt;strong&gt;쉬운 호스팅을 제공, 지속적 배포, One-Click HTTPS&lt;/strong&gt; 제공해줌.&lt;/p&gt;
+
+&lt;h3 id=&quot;사용이유-1&quot;&gt;사용이유&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;서버사이드 렌더링 지원&lt;/li&gt;
+  &lt;li&gt;https 무료 지원&lt;/li&gt;
+  &lt;li&gt;심플하고 깔끔한 인터페이스&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;일단 contentful에 글을 쓸때나 git에서 push를 했을때 hook을 통해 자동으로 Build 작업을 해주는 아주 멋진 녀석🤣. 무료로 DNS를 제공해줌.&lt;/p&gt;
+
+&lt;h3 id=&quot;진짜-쉬운-사용방법&quot;&gt;진짜 쉬운 사용방법&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;깃허브 연결&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://heropy.blog/images/screenshot/netlify_1_new_site.jpg&quot; alt=&quot;https://heropy.blog/images/screenshot/netlify_1_new_site.jpg&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;호스팅 할려는 프로젝트 선택&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;Untitled04.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;브런치 선택 후 빌드되는 경로 선택&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://heropy.blog/images/screenshot/netlify_1_deploy_setting.jpg&quot; alt=&quot;https://heropy.blog/images/screenshot/netlify_1_deploy_setting.jpg&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;published&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;DNS를 자신이 원하는 것으로 바꿀수 있3&lt;/li&gt;
+      &lt;li&gt;현재 배포 상테를 체크할 수 있음&lt;/li&gt;
+      &lt;li&gt;github의 hook 연결과 contentful hook 연결을 통해 빌드 자동화 가능&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;Untitled05.png&quot; alt=&quot;contentful&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Seongjun Lee</name></author><category term="Vue.js" /><category term="CMS" /><category term="Nutify" /><category term="blog" /><summary type="html">개발 블로그 만들기</summary></entry></feed>
