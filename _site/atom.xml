@@ -1,4 +1,228 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-23T03:24:01+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">Docker를 사용해서 간단한 로컬 DB 셋팅</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/" rel="alternate" type="text/html" title="Docker를 사용해서 간단한 로컬 DB 셋팅" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/">&lt;h1 id=&quot;목적&quot;&gt;목적&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-29T20:30:45+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">[WEB] PRG 패턴</title><link href="http://localhost:4000/web/2021/01/29/web-prg-pattern/" rel="alternate" type="text/html" title="[WEB] PRG 패턴" /><published>2021-01-29T00:00:00+09:00</published><updated>2021-01-29T00:00:00+09:00</updated><id>http://localhost:4000/web/2021/01/29/web-prg-pattern</id><content type="html" xml:base="http://localhost:4000/web/2021/01/29/web-prg-pattern/">&lt;h1 id=&quot;prg-post-redirect-get-패턴이란&quot;&gt;PRG (POST-Redirect-GET) 패턴이란?&lt;/h1&gt;
+
+&lt;p&gt;PRG 패턴은 웹 개발 시에 권장되는 디자인 패턴 중 하나로, &lt;strong&gt;HTTP POST 요청에 대한 응답이 또 다른 URL로의 GET 요청을 위한 리다이렉트(응답 코드가 3xx)여야 한다는 것&lt;/strong&gt;을 의마한다. 즉, 일반적인 HTTP GET 요청처럼 HTTP POST 요청에 대한 응답이 어떠한 페이지를 직접 반환하는 것은 권장되지 않는 위험한 방식이라는 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;prg-패턴의-필요성&quot;&gt;PRG 패턴의 필요성&lt;/h1&gt;
+
+&lt;p&gt;PRG 패턴을 사용하지 않는다면, 대표적으로 다음과 같은 두가지 문제점이 발생할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;새로고침으로-인해-동일한-http-post-요청이-중복으로-발생하여-의도치-않은-결과를-낳을-수-있다&quot;&gt;새로고침으로 인해 동일한 HTTP POST 요청이 중복으로 발생하여 의도치 않은 결과를 낳을 수 있다.&lt;/h2&gt;
+
+&lt;p&gt;만약 HTTP POST 요청에 대한 응답이 단순히 어떠한 페이지를 직접 반환하는 것이라면, 이후 새로고침을 시도했을 때 방금 전 HTTP POST 요청이 그대로 다시 서버에 전송된다. 이는 의도치 않은 결과를 낳을 수 있다.
+예를 들어, 온라인 물품 구매 후 새로고침을 하면 중복 구매가 이뤄질 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;http-post-요청의-결과에-해당하는-페이지를-북마크하거나-다른-ƒ사람과-공유하는-것이-어려워진다&quot;&gt;HTTP POST 요청의 결과에 해당하는 페이지를 북마크하거나 다른 ƒ사람과 공유하는 것이 어려워진다.&lt;/h2&gt;
+
+&lt;p&gt;북마크(즐겨찾기)는 특정 HTTP 요청의 URL만을 저장하고, 다른 사람에게 해당 페이지를 공유할 때도 오로지 URL만을 공유한다. 
+기본적으로 사용자는 URL만 가지고는 HTTP GET 요청밖에 할 수 없기 때문에, 이는 의도와 다른 페이지로 이동하는 결과를 낳게 된다. 그러나 만약 PRG 패턴을 따른다면 HTTP POST 요청에 대한 응답을 받자 마자 다시 특정 URL로의 HTTP GET 요청을 전송하기 때문에, 해당 URL을 북마크하거나 다른 사람과 공유하는 것이 가능해진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;⬇️ PRG 패턴을 사용하지 않을 때&lt;/strong&gt;
+&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/f/f3/PostRedirectGet_DoubleSubmitProblem.png&quot; alt=&quot;prg 패턴 사용 안했을때 구조&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;⬇ PRG 패턴을 사용할 때(권장)&lt;/strong&gt;
+&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/3/3c/PostRedirectGet_DoubleSubmitSolution.png&quot; alt=&quot;prg 패턴 사용 했을때 구조&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;참고&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://it-eldorado.tistory.com/68&quot;&gt;https://it-eldorado.tistory.com/68&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Post/Redirect/Get&quot;&gt;https://en.wikipedia.org/wiki/Post/Redirect/Get&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>Seongjun Lee</name></author><category term="Web" /><summary type="html">PRG (POST-Redirect-GET) 패턴이란?</summary></entry><entry><title type="html">ESLint &amp;amp; Prettier</title><link href="http://localhost:4000/javascript/2021/01/26/eslint-prettier/" rel="alternate" type="text/html" title="ESLint &amp; Prettier" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>http://localhost:4000/javascript/2021/01/26/eslint-prettier</id><content type="html" xml:base="http://localhost:4000/javascript/2021/01/26/eslint-prettier/">&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;ESLint와 Prettier를 사용하는 이유&lt;/li&gt;
+    &lt;li&gt;ESLint 적용하기&lt;/li&gt;
+    &lt;li&gt;Prettier 적용하기&lt;/li&gt;
+    &lt;li&gt;ESLint + Prettier&lt;/li&gt;
+    &lt;li&gt;Git hook을 이용한 자동화 방법&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;eslint와-prettier를-사용하는-이유&quot;&gt;ESLint와 Prettier를 사용하는 이유&lt;/h1&gt;
+
+&lt;p&gt;ESLint와 Prettier는 보통 프로젝트 시작 단계(초기 셋팅)에서 코드 포맷팅과 코드 품질을 위해서 사용합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;코드 포맷팅 : 코드 컨벤션을 설정하기 위함.&lt;/li&gt;
+  &lt;li&gt;코드 품질 : 잠재적인 오류나 버그를 찾는 역할&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;eslint-적용하기&quot;&gt;ESLint 적용하기&lt;/h1&gt;
+
+&lt;h2 id=&quot;목적&quot;&gt;목적&lt;/h2&gt;
+
+&lt;p&gt;코드 검사 및 수정&lt;/p&gt;
+
+&lt;h2 id=&quot;적용-방법&quot;&gt;적용 방법&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;node.js 설치가 필수, node package를 이용.&lt;/p&gt;
+
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;// .eslintrc.js&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ 	&lt;span class=&quot;na&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ 		&lt;span class=&quot;s1&quot;&gt;'no-unexpected-multiline'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ 		&lt;span class=&quot;s1&quot;&gt;'no-extra-semi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ 	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+ &lt;span class=&quot;c1&quot;&gt;// package.json &amp;gt; script : { &quot;lint&quot; :  &quot;eslint src&quot; }&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;// src에 해당하는 모든 코드를 검사&lt;/span&gt;
+
+ &lt;span class=&quot;c1&quot;&gt;// npm run lint 명렁어 실행&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; 파일 아래에 script 문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ &quot;lint&quot; : &quot;eslint src&quot; }&lt;/code&gt;를 작성합니다.
+이것으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run lint&lt;/code&gt; 명령어를 실행하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;에 해당하는 모든 코드를 검사합니다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--fix&lt;/code&gt; 옵션을 이용하여 잘못된 부분은 수정되도록 설정도 가능합니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://eslint.org/docs/rules/&quot;&gt;eslint.org/docs/rules&lt;/a&gt; 을 참고하면 스패너 모양은 &lt;code class=&quot;highlighter-rouge&quot;&gt;--fix&lt;/code&gt; 옵션을 이용하여 수정 가능 하다는 것을 알려줍니다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;✔️ 표시가 되어있는 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;extends&quot; : &quot;eslint:recommended&quot;&lt;/code&gt; 를 적용했을 경우 적용되는 룰입니다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// .eslintrc.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'eslint:recommended'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;prettier-적용하기&quot;&gt;Prettier 적용하기&lt;/h1&gt;
+
+&lt;h2 id=&quot;목적-1&quot;&gt;목적&lt;/h2&gt;
+
+&lt;p&gt;코드 포맷팅, 코드의 일관성을 유지할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;적용-방법-1&quot;&gt;적용 방법&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install prettier      // 설치
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npx prettier src/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;     // 실행
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npx prettier src/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--write&lt;/span&gt;     // 실행 후 적용
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;prettier는 eslint와 달리 규칙이 미리 셋팅되어있습니다. 따라서 추가 설정업시 바로 사용이 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;eslint--prettier&quot;&gt;ESLint + Prettier&lt;/h1&gt;
+
+&lt;p&gt;코드 포맷팅을 맞추더라도 코드 품질과 관련된 검사는 ESLint의 몫입니다.&lt;/p&gt;
+
+&lt;p&gt;ESLint는 prettier와 통합하는 방법을 제공해줍니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;eslint-config-prettier&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;eslint-plugin-prettier&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;prettier 포맷팅 규칙을 eslint에 추가합니다. 서로 충돌하는 옵션이 있다면 prettier의 규칙을 사용하도록 하는 도구입니다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install eslint-config-prettier eslint-plugin-prettier
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// .eslintrc.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'eslint:recommended'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'plugin:prettier/recommended'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;git-hook을-이용한-자동화-방법&quot;&gt;Git hook을 이용한 자동화 방법&lt;/h1&gt;
+
+&lt;h2 id=&quot;git-hook이란&quot;&gt;Git hook이란?&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;husky를 이용&lt;/code&gt;, 커밋 시점에 어떤 일을 작동시킬 수 있습니다. 이것을 이용해서 커밋 시점에 ESLint를 체크할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-방법&quot;&gt;설치 방법&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;허스키를 설치합니다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install husky
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;깃 훅 테스트 방법, 아래 페키지를 작성 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git commit --allow-empty -m &quot;husky test&quot;&lt;/code&gt; 명령어 실행 =&amp;gt; 콘솔창 확인&lt;/p&gt;
+
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;package.json&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 	&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;husky&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 		&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hooks&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 			&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pre-commit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echo '커밋전 출력'&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 		&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;테스트 완료 후 아래로 수정&lt;/p&gt;
+
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;package.json&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 	&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;husky&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 		&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hooks&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 			&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pre-commit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npm run lint&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 		&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ 	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;최적화&quot;&gt;최적화&lt;/h2&gt;
+
+&lt;p&gt;위 방법은 모든 소스 코드를 검사하는 방법입니다. 만약 코드가 많아져서 모든 코드를 검사하면서 커밋이 느려질 수 있는데
+이럴경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-staged&lt;/code&gt;를 이용하여 &lt;strong&gt;변경(스테이징)된 파일만 린트&lt;/strong&gt;를 수행할 수 있는 도구입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install lint-staged
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;package.json&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;husky&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+		&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hooks&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+			&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pre-commit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;lint-staged&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+		&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;lint-staged&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+		&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*.{js,ts}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npm run lint&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;에디터의-확장-프로그램을-이용한-방법&quot;&gt;에디터의 확장 프로그램을 이용한 방법.&lt;/h2&gt;
+
+&lt;p&gt;커밋 시점이 아닌 개발 단계에서 ESLint &amp;amp; Prettier 적용이 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;VS Code&lt;/code&gt;의 ESLint와 Prettier 확장 프로그램을 설치해서 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;사용법은 아래를 참고해주세요.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;settings.json&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eslint.enable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;eslint&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;활성화&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;editor.codeActionsOnSave&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;저장시&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;eslint&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;규칙에&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;맞게&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;수정&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+		&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;source.fixAll.eslint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Seongjun Lee</name></author><category term="JavaScript" /><category term="ESLint" /><category term="Prettier" /><category term="Node.js" /><category term="VS Code" /><summary type="html">ESLint와 Prettier를 사용하는 이유 ESLint 적용하기 Prettier 적용하기 ESLint + Prettier Git hook을 이용한 자동화 방법</summary></entry><entry><title type="html">Docker를 사용해서 간단한 로컬 DB 셋팅</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/" rel="alternate" type="text/html" title="Docker를 사용해서 간단한 로컬 DB 셋팅" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/">&lt;h1 id=&quot;목적&quot;&gt;목적&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;같은 포트에서 간단한 명령어를 통해 여러 버전, 다양한 DB를 관리하기 위함.&lt;/li&gt;

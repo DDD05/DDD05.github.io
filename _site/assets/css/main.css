@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; font-weight: bold; line-height: 
 
 h2, h3, h4, h5, h6 { margin: 20px 0 15px; }
 
-h1 { font-size: 22px; }
+h1 { font-size: 25px; }
 
 @media (max-width: 767px) { h1 { font-size: 18px; } }
 h2 { font-size: 20px; }
@@ -558,7 +558,7 @@ pre .k, pre .kd, pre .kn, pre .kp, pre .kr, pre .kt, pre .javascript .function {
 .links-of-author { margin-top: 20px; }
 
 .links-of-author a { display: inline-block; vertical-align: middle; margin-right: 10px; margin-bottom: 10px; border-bottom-color: #555; font-size: 13px; }
-.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #6600ff; }
+.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #ff9673; }
 
 .links-of-blogroll { font-size: 13px; }
 
