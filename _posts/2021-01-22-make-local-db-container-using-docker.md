@@ -1,7 +1,7 @@
 ---
 title: Docker를 사용해서 간단한 로컬 DB 셋팅
 date: 2021-01-22
-categories: 일상
+categories: Docker
 tags: [Docker, DB, MySQL]
 description: '로컬 환경에서 Docker를 이용하여 간단하게 DB를 환경 셋팅'
 ---
