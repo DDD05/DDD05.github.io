@@ -83,7 +83,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Docker,DB,MySQL," />
+  <meta name="keywords" content="Vue.js,CMS,Nutify,blog," />
 
 
 
@@ -111,28 +111,26 @@
 
 
 
-<meta name="description" content="로컬 환경에서 Docker를 이용하여 간단하게 DB를 환경 셋팅">
-<meta name="keywords" content="Docker, DB, MySQL">
+<meta name="description" content="Front-end : Vue.js &amp; Back-end : contentful(CMS) &amp; Deploy : Nutify">
+<meta name="keywords" content="Vue.js, CMS, Nutify, blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker를 사용해서 간단한 로컬 DB 셋팅">
-<meta property="og:url" content="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/">
+<meta property="og:title" content="Vue와 CMS를 이용하여 나의 개발 블로그 만들기">
+<meta property="og:url" content="http://localhost:4000/utility/2021/01/20/make-dev-blog/">
 <meta property="og:site_name" content="슬기로운 개발생활">
-<meta property="og:description" content="로컬 환경에서 Docker를 이용하여 간단하게 DB를 환경 셋팅">
+<meta property="og:description" content="Front-end : Vue.js &amp; Back-end : contentful(CMS) &amp; Deploy : Nutify">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker01.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker02.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker03.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker04.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker05.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker06.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker07.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker08.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker09.png">
-<meta property="og:image" content="/assets/post-img/make-local-db-container-using-docker/docker10.png">
+<meta property="og:image" content="/assets/post-img/make-dev-blog/Untitled00.png">
+<meta property="og:image" content="/assets/post-img/make-dev-blog/Untitled01.png">
+<meta property="og:image" content="/assets/post-img/make-dev-blog/Untitled02.png">
+<meta property="og:image" content="/assets/post-img/make-dev-blog/Untitled03.png">
+<meta property="og:image" content="https://heropy.blog/images/screenshot/netlify_1_new_site.jpg">
+<meta property="og:image" content="/assets/post-img/make-dev-blog/Untitled04.png">
+<meta property="og:image" content="https://heropy.blog/images/screenshot/netlify_1_deploy_setting.jpg">
+<meta property="og:image" content="/assets/post-img/make-dev-blog/Untitled05.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker를 사용해서 간단한 로컬 DB 셋팅">
-<meta name="twitter:description" content="로컬 환경에서 Docker를 이용하여 간단하게 DB를 환경 셋팅">
-<meta name="twitter:image" content="/assets/post-img/make-local-db-container-using-docker/docker01.png">
+<meta name="twitter:title" content="Vue와 CMS를 이용하여 나의 개발 블로그 만들기">
+<meta name="twitter:description" content="Front-end : Vue.js &amp; Back-end : contentful(CMS) &amp; Deploy : Nutify">
+<meta name="twitter:image" content="/assets/post-img/make-dev-blog/Untitled00.png">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -165,7 +163,7 @@
 
 
 
-  <title>Docker를 사용해서 간단한 로컬 DB 셋팅 | 슬기로운 개발생활</title>
+  <title>Vue와 CMS를 이용하여 나의 개발 블로그 만들기 | 슬기로운 개발생활</title>
   
 
 
@@ -246,18 +244,6 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             카테고리
-          </a>
-        </li>
-      
-        
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
           </a>
         </li>
       
@@ -349,7 +335,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/utility/2021/01/20/make-dev-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Seongjun Lee">
@@ -369,7 +355,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            Docker를 사용해서 간단한 로컬 DB 셋팅
+            Vue와 CMS를 이용하여 나의 개발 블로그 만들기
           
         </h1>
         
@@ -383,8 +369,8 @@
               
                 <span class="post-meta-item-text">작성일</span>
               
-              <time title="" itemprop="dateCreated datePublished" datetime="2021-01-22T00:00:00+09:00">
-                2021-01-22
+              <time title="" itemprop="dateCreated datePublished" datetime="2021-01-20T00:00:00+09:00">
+                2021-01-20
               </time>
             
 
@@ -407,8 +393,8 @@
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/%EC%9D%BC%EC%83%81" itemprop="url" rel="index">
-                    <span itemprop="name">일상</span>
+                  <a href="/category/#/Utility" itemprop="url" rel="index">
+                    <span itemprop="name">Utility</span>
                   </a>
                 </span>
 
@@ -432,7 +418,7 @@
           
             
                 <div class="post-description">
-                    로컬 환경에서 Docker를 이용하여 간단하게 DB를 환경 셋팅
+                    Front-end : Vue.js & Back-end : contentful(CMS) & Deploy : Nutify
                 </div>
             
           
@@ -462,147 +448,199 @@
 
 
 
-  <h1 id="목적">목적</h1>
+  <blockquote>
+  <p>개발 블로그 만들기</p>
+</blockquote>
+
+<p>경력은 쌓여가는데 슬프게도 개발 실력이 쌓이지 않는 불안감에서 시작하게되었고, 요즘 개발자들 사이에서 개인 블로그를 만든는 것이 유행이라는 말에 바로 만들어 보기로했다.😁</p>
+
+<p>개발하면서 고민하거나 겪었던 이슈를 기록하고 나와 다른 개발자들에게 도움이 될 수 있는 공간을 만들고 싶었고, 마지막으로 나의 커리어를 어필하는 용도로 블로그가 매우 적합하다고 생각했다.</p>
+
+<h1 id="기술-스택-">기술 스택 🔨</h1>
 
 <ul>
-  <li>같은 포트에서 간단한 명령어를 통해 여러 버전, 다양한 DB를 관리하기 위함.</li>
-  <li>작은 프로젝트라 같은 서버에 (디비+ 백 + 프론트) 배포 할 목적, 미리 배포 환경을 셋팅 할 수 있음.</li>
+  <li>Back, Contentful of CMS</li>
+  <li>Front, Vue.js</li>
+  <li>Deploy, Nutify</li>
+  <li>Git</li>
 </ul>
 
+<blockquote>
+  <p>환경셋팅이 쉬운 기술을 이용하여 개발시간을 최대로 줄임 ( 저는 기술을 공부하고 사용한다고 5시간이나 걸림;;; )</p>
+</blockquote>
+
+<h2 id="cms란">CMS란?</h2>
+
+<ul>
+  <li>Contents Management System, 콘텐츠 관리 시스템</li>
+</ul>
+
+<h3 id="사용이유">사용이유</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">Back</code>이 필요없이 <code class="highlighter-rouge">프론트 &amp; 디자인</code>으로만 웹 사이트를 만들어 낼 수 있음.</li>
+  <li><strong>오픈소스라서 무료</strong></li>
+  <li>기능 및 속도가 좋음</li>
+  <li><strong>편하게 컨텐츠를 관리 가능</strong></li>
+</ul>
+
+<blockquote>
+  <p>간단한 회사 홈페이지나 개인 홈페이지, 블로그 등은 CMS로 간단하게 만들 수 있음.</p>
+</blockquote>
+
+<h3 id="contentful-api">Contentful api</h3>
+
+<ul>
+  <li>CMS의 오픈소스 중 하나 5,000 엔티티까지 무료</li>
+  <li>워드프레스 사용자들은 익숙하게 사용 가능</li>
+  <li>여튼 직관적이여서 편해 보이며 사용 오픈소스가 많아보임</li>
+</ul>
+
+<p><img src="/assets/post-img/make-dev-blog/Untitled00.png" alt="contentful" /></p>
+
+<p>컨텐츠 관리하는 화면, Status를 통해 글을 publish 할지 안할지 결정 가능</p>
+
+<p><img src="/assets/post-img/make-dev-blog/Untitled01.png" alt="contentful" /></p>
+
+<p>글을 작성할때 필요한 템플릿을 커스텀하여 결정 가능</p>
+
+<p><img src="/assets/post-img/make-dev-blog/Untitled02.png" alt="contentful" /></p>
+
+<p>컨텐츠를 작서하는 화면으로 <code class="highlighter-rouge">Mark dowm</code>을 지원하여 언어만 알고있다면 편하게 글 쓰기 가능, 또 그림등도 업로드후 URI를 통해 표현가능</p>
+
 <p><br /></p>
 
-<h1 id="-스토리">📖 스토리</h1>
+<h1 id="화면만들기-">화면만들기 👨‍💻</h1>
 
-<p>회사 동기와 간단하게 프로젝트를 진행하게 되었다.</p>
+<p>Vue.js를 이용하여 프론트를 만들어보았다. UI 라이브러리는 <a href="https://vuetifyjs.com/en/">Vuetify</a>를 이용하였다.</p>
 
-<p>백엔드는 MySQL과 Spring을 이용하여 서버를 만들었고 간단한 미팅을 통해 DB모델링과 아키텍처를 설계하고 Back과 Front는 REST API를 통해 데이터를 주고 받으며 작업 공간을 분리하기로 하였다.</p>
+<h2 id="작업-순서">작업 순서</h2>
 
-<p>백엔드쪽에서 swagger가 완성되고 아직 배포 환경이 셋팅되지않아 직접 로컬에서 서버를 실행 시켜확인해야 했고, 이러한 광정에서 도커를 이용해서 간편하게 껏다 킬 수 있는 디비를 셋팅 해볼까한다.😁</p>
-
-<p><br /></p>
-
-<h1 id="️-설치-가이드">⚙️ 설치 가이드</h1>
-
-<h2 id="도커-설치">도커 설치</h2>
+<p>Contentful plugin을 설치한 후 import만 하면된다.</p>
 
 <ol>
   <li>
-    <p><a href="https://www.notion.so/donaldd/Docker-2a385060554b429aac487405550d11fc#6676687b26554c0cbc00903dd4b2446b">Docker</a>를 설치한다.</p>
+    <p>vue 프로젝트를 생성</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code> vue create <span class="s2">"PROJECT_NAME"</span>
+</code></pre></td></tr></tbody></table></div>    </div>
   </li>
   <li>
-    <p>설치가 완료되면 기본적으로 튜토리얼을 실행시켜 사용하기 전 올바르게 설치되어있는지 확인할 수 있습니다. (선택)</p>
+    <p>plugin을 설치</p>
 
-    <p><img src="/assets/post-img/make-local-db-container-using-docker/docker01.png" alt="docker01" /></p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code> npm install contentfull
+</code></pre></td></tr></tbody></table></div>    </div>
+  </li>
+  <li>
+    <p>설치한 플러그인을 import</p>
 
-    <p>위 명령어를 통해 도커에서 제공하는 기본 스타트 프로젝트를 클론 받습니다.</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16</pre></td><td class="code"><pre class="highlight"><code> <span class="c1">// ./plugins/contentful.js</span>
 
-    <p><img src="/assets/post-img/make-local-db-container-using-docker/docker02.png" alt="docker02" /></p>
+ <span class="kd">const</span> <span class="nx">contentful</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'contentful'</span><span class="p">);</span>
+ <span class="c1">// use default environment config for convenience</span>
+ <span class="c1">// these will be set via `env` property in nuxt.config.js</span>
+ <span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+ 	<span class="na">space</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">VUE_APP_CTF_SPACE_ID</span><span class="p">,</span> <span class="c1">// Space id</span>
+ 	<span class="na">accessToken</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">VUE_APP_CTF_CDA_ACCESS_TOKEN</span><span class="p">,</span> <span class="c1">// Token</span>
+ <span class="p">};</span>
 
-    <p>클론 받은 경로로 이동하여 도커 파일을 빌드합니다.</p>
+ <span class="c1">// export `createClient` to use it in page components</span>
+ <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+ 	<span class="nx">createClient</span><span class="p">()</span> <span class="p">{</span>
+ 		<span class="k">return</span> <span class="nx">contentful</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+ 	<span class="p">},</span>
+ <span class="p">};</span>
+</code></pre></td></tr></tbody></table></div>    </div>
 
-    <p>빌드를 성공하면 도커 이미지가 생성됩니다.</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33</pre></td><td class="code"><pre class="highlight"><code> <span class="c1">// app.vue &lt;script&gt;</span>
 
-    <p><img src="/assets/post-img/make-local-db-container-using-docker/docker03.png" alt="docker03" /></p>
+ <span class="k">import</span> <span class="p">...</span>
+ <span class="k">import</span> <span class="nx">contentful</span> <span class="k">from</span> <span class="s2">"@/plugins/contentful.js"</span><span class="p">;</span>  <span class="c1">// import contentful</span>
+ <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">contentful</span><span class="p">.</span><span class="nx">createClient</span><span class="p">();</span> <span class="c1">// return createClient()</span>
+ <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+   <span class="na">name</span><span class="p">:</span> <span class="s2">"App"</span><span class="p">,</span>
+   <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="p">{};</span>
+   <span class="p">},</span>
+   <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nx">appbar</span><span class="p">,</span>
+     <span class="nx">vfooter</span><span class="p">,</span>
+     <span class="nx">vview</span><span class="p">,</span>
+   <span class="p">},</span>
+   <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nx">setPosts</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s2">"setPosts"</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span> <span class="c1">// vuex의 state.posts에 넣는 메소드</span>
+     <span class="p">},</span>
+   <span class="p">},</span>
+ <span class="c1">// 프로젝트를 실행 할 때 모든 컨텐츠를 가지고와서 정적으로 사용할 예정</span>
+ <span class="c1">// Vuex의 state.posts 변수에 담김</span>
+   <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">client</span>
+       <span class="p">.</span><span class="nx">getEntries</span><span class="p">()</span>
+       <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">items</span><span class="p">);</span>
+         <span class="k">this</span><span class="p">.</span><span class="nx">setPosts</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">items</span><span class="p">);</span>
+       <span class="p">})</span>
+       <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+   <span class="p">},</span>
+ <span class="p">};</span>
 
-    <p>생성한 도커 이미지 파일을 80포트로 실행한다. 이렇게 되면 도커 컨테이너가 올라가게 된다. (접속가능)
- 브라우저에 localhost로 접속해보면 아래와 같은 화면을 볼 수 있습니다. 😋</p>
-
-    <p>아래와 같은 화면이 뜨면 도커가 올바르게 실행되고 있다는 뜻입니다.</p>
-
-    <p><img src="/assets/post-img/make-local-db-container-using-docker/docker04.png" alt="docker04" /></p>
-
-    <p>도커에는 도커 허브라는 이미지를 공유하는 커뮤니티 공간이 있는데 github과 비슷합니다.</p>
-
-    <p>이 공간을 통해서 타사에서 제공하는 미리 셋팅된 이미지를 클론받아 빠르고 쉽게 환경을 구축 할 수 있습니다.</p>
-
-    <p>또 자신만의 배포 환경이나 배포 버전을 관리하여 배포하고 싶은 서버에서 클론받아 실행시켜 편리하게 환경을 구축 할 수 있습니다.</p>
-
-    <p><img src="/assets/post-img/make-local-db-container-using-docker/docker05.png" alt="docker05" />
- <img src="/assets/post-img/make-local-db-container-using-docker/docker06.png" alt="docker06" /></p>
+</code></pre></td></tr></tbody></table></div>    </div>
   </li>
 </ol>
 
-<p><br /></p>
-
-<h1 id="mysql-컨테이너-실행">MySQL 컨테이너 실행</h1>
-
-<p><a href="https://hub.docker.com/_/mysql">MySQL</a>이 도커 허브에서 이미지를 공식적으로 제공합니다.</p>
-
-<p>일단 원하는 DB와 버전을 확인합니다. 저는 <code class="highlighter-rouge">MySQL 5.7.30</code> 버전을 사용하기로 했습니다.
-터미널을 열어 <code class="highlighter-rouge">docker pull mysql:tag</code> 명령어를 실행합니다 (tag에는 버전을 기입)</p>
-
-<p><img src="/assets/post-img/make-local-db-container-using-docker/docker07.png" alt="docker" /></p>
-
-<p>pull을 성공적으로 했다면 mysql 이미지가 생겼을 것이다.
-<code class="highlighter-rouge">docker images</code> 명령어를 통해 확인할 수 있습니다.</p>
-
-<p><img src="/assets/post-img/make-local-db-container-using-docker/docker08.png" alt="docker" /></p>
-
-<p>이제 이미지를 통해 컨테이너를 생성하고 실행해보겠습니다.</p>
-
-<p>컨테이너 생성은 이미지를 한번이라도 실행시키면 자동으로 생성됩니다. 이렇게 만들어진 컨테이너는 명령어를 통해 작동을 컨트롤 할 수 있습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">-p</span> 3306:3306 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>1234 <span class="nt">--name</span> to-do-noti-2007-db-mysql <span class="nt">-v</span> /Users/ddd/Documents/repository/To-do-list2007/DB:/var/lib/mysql mysql:5.7.30 <span class="nt">--character-set-server</span><span class="o">=</span>utf8mb4 <span class="nt">--collation-server</span><span class="o">=</span>utf8mb4_unicode_ci
-</code></pre></td></tr></tbody></table></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>- d: 백그라운드에서 실행
-- p: 포트 설정
-- e: 환경 변수 설정
-- name: 컨테이너 이름
-- v: 저장소를 마운트 (컨테이너를 삭제 시 데이터 복구가 힘들 것 같아서)
-- 마지막은 실행 시킬 이미지와 버전 그리고 옵션을 추가해서 한글 입력이 가능하도록 만들었습니다.
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>명령어를 실행하면 이제 백그라운에서 mysql container를 실행합니다.
-확인을 해보고 싶다면 <code class="highlighter-rouge">docker ps</code> 명령어를 입력해봅니다.</p>
-
-<p><img src="/assets/post-img/make-local-db-container-using-docker/docker09.png" alt="docker" /></p>
-
-<blockquote>
-  <p>혹시나 실행되지 않는다면 기존의 설치된 DB와 포트가 충돌했을 수 있습니다.</p>
-</blockquote>
-
-<p>정상적으로 컨테이너가 실행되고 있는 것을 확인 할 수 있습니다.
-해당 DB로 접속해 보겠습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> to-do-noti-2007-db-mysql bash
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>명령어를 통해 컨테이너의 bash로 접속합니다. 다음 <code class="highlighter-rouge">mysql -u root -p</code> 명령어를 통해 설치한 mysql로 접속합니다.</p>
-
-<p><img src="/assets/post-img/make-local-db-container-using-docker/docker10.png" alt="docker" /></p>
+<p><img src="/assets/post-img/make-dev-blog/Untitled03.png" alt="contentful" /></p>
 
 <p><br /></p>
 
-<h1 id="심화-docker-compose로-관리">[심화] docker-compose로 관리</h1>
+<h1 id="배포하기">배포하기</h1>
 
-<blockquote>
-  <p>docker-compose는 도커 파일 또는 컨테이너를 효율적으로 실행시키고 설정들을 문서화하여 관리 할 수 있습니다.</p>
-</blockquote>
+<p><code class="highlighter-rouge">Nutify</code> 를 이용해서 배포.</p>
 
-<p>docker-compose.yml 파일을 만듭니다.</p>
+<h2 id="nutify란">Nutify란?</h2>
 
-<p>좋은 예제가 있어서 공유하겠습니다.</p>
+<p>GitHub, GitLab 계정 연동 및 <strong>쉬운 호스팅을 제공, 지속적 배포, One-Click HTTPS</strong> 제공해줌.</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16</pre></td><td class="code"><pre class="highlight"><code><span class="s">// docker-compose.yml</span>
+<h3 id="사용이유-1">사용이유</h3>
 
-<span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3"</span> <span class="c1"># 파일 규격 버전</span>
-<span class="na">services</span><span class="pi">:</span> <span class="c1"># 이 항목 밑에 실행하려는 컨테이너 들을 정의</span>
-<span class="na">db</span><span class="pi">:</span> <span class="c1"># 서비스 명</span>
-    <span class="na">image</span><span class="pi">:</span> <span class="s">mysql:5.7.30</span> <span class="c1"># 사용할 이미지</span>
-    <span class="na">container_name</span><span class="pi">:</span> <span class="s">ddd05-todoNoti-mysql</span> <span class="c1"># 컨테이너 이름 설정</span>
-    <span class="na">ports</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s2">"</span><span class="s">3306:3306"</span> <span class="c1"># 접근 포트 설정 (컨테이너 외부:컨테이너 내부)</span>
-    <span class="na">environment</span><span class="pi">:</span> <span class="c1"># -e 옵션</span>
-    <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1234"</span>  <span class="c1"># MYSQL 패스워드 설정 옵션</span>
-    <span class="na">command</span><span class="pi">:</span> <span class="c1"># 명령어 실행</span>
-    <span class="pi">-</span> <span class="s">--character-set-server=utf8mb4</span>
-    <span class="pi">-</span> <span class="s">--collation-server=utf8mb4_unicode_ci</span>
-    <span class="na">volumes</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">/Users/ddd/Documents/repository/To-do-list-noti2007/DB:/var/lib/mysql</span> <span class="c1"># -v 옵션 (다렉토리 마운트 설정)</span>
-</code></pre></td></tr></tbody></table></div></div>
+<ol>
+  <li>서버사이드 렌더링 지원</li>
+  <li>https 무료 지원</li>
+  <li>심플하고 깔끔한 인터페이스</li>
+</ol>
 
-<p>실행 방법은 <code class="highlighter-rouge">docker-compose up -d</code> 입니다.</p>
+<p>일단 contentful에 글을 쓸때나 git에서 push를 했을때 hook을 통해 자동으로 Build 작업을 해주는 아주 멋진 녀석🤣. 무료로 DNS를 제공해줌.</p>
+
+<h3 id="진짜-쉬운-사용방법">진짜 쉬운 사용방법</h3>
+
+<ol>
+  <li>
+    <p>깃허브 연결</p>
+
+    <p><img src="https://heropy.blog/images/screenshot/netlify_1_new_site.jpg" alt="https://heropy.blog/images/screenshot/netlify_1_new_site.jpg" /></p>
+  </li>
+  <li>
+    <p>호스팅 할려는 프로젝트 선택</p>
+
+    <p><img src="/assets/post-img/make-dev-blog/Untitled04.png" alt="contentful" /></p>
+  </li>
+  <li>
+    <p>브런치 선택 후 빌드되는 경로 선택</p>
+
+    <p><img src="https://heropy.blog/images/screenshot/netlify_1_deploy_setting.jpg" alt="https://heropy.blog/images/screenshot/netlify_1_deploy_setting.jpg" /></p>
+  </li>
+  <li>
+    <p>published</p>
+
+    <ul>
+      <li>DNS를 자신이 원하는 것으로 바꿀수 있3</li>
+      <li>현재 배포 상테를 체크할 수 있음</li>
+      <li>github의 hook 연결과 contentful hook 연결을 통해 빌드 자동화 가능</li>
+    </ul>
+
+    <p><img src="/assets/post-img/make-dev-blog/Untitled05.png" alt="contentful" /></p>
+  </li>
+</ol>
 
 
       
@@ -634,13 +672,16 @@
         <div class="post-tags">
           
             
-            <a href="/tag/#/Docker" rel="tag"># Docker</a>
+            <a href="/tag/#/Vue.js" rel="tag"># Vue.js</a>
           
             
-            <a href="/tag/#/DB" rel="tag"># DB</a>
+            <a href="/tag/#/CMS" rel="tag"># CMS</a>
           
             
-            <a href="/tag/#/MySQL" rel="tag"># MySQL</a>
+            <a href="/tag/#/Nutify" rel="tag"># Nutify</a>
+          
+            
+            <a href="/tag/#/blog" rel="tag"># blog</a>
           
         </div>
       
@@ -656,8 +697,8 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/javascript/2021/01/26/eslint-prettier/" rel="next" title="ESLint & Prettier">
-                <i class="fa fa-chevron-left"></i> ESLint & Prettier
+              <a href="/docker/2021/01/22/make-local-db-container-using-docker/" rel="next" title="Docker를 사용해서 간단한 로컬 DB 셋팅">
+                <i class="fa fa-chevron-left"></i> Docker를 사용해서 간단한 로컬 DB 셋팅
               </a>
             
           </div>
@@ -665,10 +706,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/" rel="prev" title="Vue와 CMS를 이용하여 나의 개발 블로그 만들기">
-                Vue와 CMS를 이용하여 나의 개발 블로그 만들기 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -749,7 +786,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">포스트</span>
               </a>
             </div>
@@ -760,7 +797,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">카테고리</span>
               </a>
             </div>
@@ -771,7 +808,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">태그</span>
               </a>
             </div>
@@ -838,7 +875,7 @@
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#목적"> <span class="nav-number">1</span> <span class="nav-text">목적</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#-스토리"> <span class="nav-number">2</span> <span class="nav-text">📖 스토리</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#️-설치-가이드"> <span class="nav-number">3</span> <span class="nav-text">⚙️ 설치 가이드</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#도커-설치"> <span class="nav-number">3.1</span> <span class="nav-text">도커 설치</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#mysql-컨테이너-실행"> <span class="nav-number">4</span> <span class="nav-text">MySQL 컨테이너 실행</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#심화-docker-compose로-관리"> <span class="nav-number">5</span> <span class="nav-text">[심화] docker-compose로 관리</span> </a> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#기술-스택-"> <span class="nav-number">1</span> <span class="nav-text">기술 스택 🔨</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#cms란"> <span class="nav-number">1.1</span> <span class="nav-text">CMS란?</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#사용이유"> <span class="nav-number">1.1.1</span> <span class="nav-text">사용이유</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#contentful-api"> <span class="nav-number">1.1.2</span> <span class="nav-text">Contentful api</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#화면만들기-"> <span class="nav-number">2</span> <span class="nav-text">화면만들기 👨‍💻</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#작업-순서"> <span class="nav-number">2.1</span> <span class="nav-text">작업 순서</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#배포하기"> <span class="nav-number">3</span> <span class="nav-text">배포하기</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#nutify란"> <span class="nav-number">3.1</span> <span class="nav-text">Nutify란?</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#사용이유-1"> <span class="nav-number">3.1.1</span> <span class="nav-text">사용이유</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#진짜-쉬운-사용방법"> <span class="nav-number">3.1.2</span> <span class="nav-text">진짜 쉬운 사용방법</span> </a> </li> </ol> </li> </ol> </li>
     </ol>
   </div>
             

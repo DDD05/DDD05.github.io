@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-29T20:30:45+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">[WEB] PRG 패턴</title><link href="http://localhost:4000/web/2021/01/29/web-prg-pattern/" rel="alternate" type="text/html" title="[WEB] PRG 패턴" /><published>2021-01-29T00:00:00+09:00</published><updated>2021-01-29T00:00:00+09:00</updated><id>http://localhost:4000/web/2021/01/29/web-prg-pattern</id><content type="html" xml:base="http://localhost:4000/web/2021/01/29/web-prg-pattern/">&lt;h1 id=&quot;prg-post-redirect-get-패턴이란&quot;&gt;PRG (POST-Redirect-GET) 패턴이란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-10T17:55:59+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
+
+&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;모든 npm package는 이름을 가지고있습니다. 그리고 약간의 패키지들은 scope를 가지고있습니다.&lt;/p&gt;
+
+&lt;p&gt;이런 스코프를 가지고있는 패키지들은 이름을 정하는 룰이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;바로 &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; symbol과 slash를 사용하는 것이죠.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@somescope/somepackagename
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이것을 &lt;strong&gt;scoped packages&lt;/strong&gt; 라고 부르며 npm에 새로 추가된 기능입니다.&lt;/p&gt;
+
+&lt;p&gt;npm 패키지에 &lt;strong&gt;네임스페이스&lt;/strong&gt;를 적용하여 아래와 같은 규칙을 정합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;global modules : 현재 존재하는 컨벤션 네임을 따른 모듈.&lt;/li&gt;
+  &lt;li&gt;scoped modules : 조직이나 그룹에 “scoped” 된 새로운 모듈.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installing-scoped-packages&quot;&gt;Installing scoped packages&lt;/h2&gt;
+
+&lt;p&gt;일반적인 패키지들은 &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules/packagename&lt;/code&gt; 형식으로 설치됩니다. scoped modules은 &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules/@myorg/packagename&lt;/code&gt;의 경로로 설치됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; symbol, in &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; :&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install @myorg/mypackage
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Or in &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; :&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@myorg/mypackage&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^1.3.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[참고] &lt;br /&gt;
+&lt;a href=&quot;https://docs.npmjs.com/cli/v6/using-npm/scope&quot;&gt;https://docs.npmjs.com/cli/v6/using-npm/scope&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Seongjun Lee</name></author><category term="node.js" /><category term="NPM" /><summary type="html">Scoped packages</summary></entry><entry><title type="html">구닥다리 공룡을 위한 오늘날의 JavaScript</title><link href="http://localhost:4000/javascript/2021/02/03/ModernJavaScriptExplainedForDinosaurs/" rel="alternate" type="text/html" title="구닥다리 공룡을 위한 오늘날의 JavaScript" /><published>2021-02-03T00:00:00+09:00</published><updated>2021-02-03T00:00:00+09:00</updated><id>http://localhost:4000/javascript/2021/02/03/ModernJavaScriptExplainedForDinosaurs</id><content type="html" xml:base="http://localhost:4000/javascript/2021/02/03/ModernJavaScriptExplainedForDinosaurs/">&lt;h1 id=&quot;modern-javascript-explained-for-dinosaurs&quot;&gt;Modern JavaScript Explained For Dinosaurs&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://steemitimages.com/DQmTjgFdSuYBi4qqSxKmivun54Y7aLAkz6jChi7DU2Qxrdq/modern_dino_1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;오늘날 자바스크립트를 공부하는 것은 힘들다. 특히나 초창기부터 자바스크립트를 접하지 않은 사람이라면 더욱이..!
+그정도로 자바스크립트의 생태계는 엄청 빠르게 성장하고 변하기 때문에 다양한 도구로 해결하는 문제 자체가 이해하기 어려워 졌다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://browserify.org/&quot;&gt;Browserify&lt;/a&gt;라는 태그라인을 알고있는가?&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;“Browserify는 브라우저에서 require(‘modules’)를 사용하여 모든 의존성을 통합할 수 있다.” &lt;br /&gt;
+라는 설명 문장으로 설명되어 있지만 이해하기 어렵다 😅&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 글에서는 website(단순한 HTML, JavaScript 외에 어떤 도구도 사용되지 않는)를 만들어 보고, 차차 구식 frontend 개발 생태계의 문제점들을 해결하는 도구들을 하나씩 소개할 예정이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;구식-자바스크립트&quot;&gt;구식 자바스크립트&lt;/h1&gt;
+
+&lt;p&gt;일단, 수동으로 파일들을 다운받고 연결하는 구식 웹사이트로 시작해 본다.&lt;/p&gt;
+
+&lt;p&gt;이 웹사이트는 HTML과 자바스크립트를 사용한다. 여기 하나의 자바스크립트 파일이 연결된 간단한 index.html이 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- index.html --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;자바스크립트 Example&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello from HTML!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;이 행은 index.html과 같은 디렉토리에 있는 별도의 자바스크립트 파일인 index.js를 참조한다. index.js의 내용은 아래와 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello from 자바스크립트!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이게 웹사이트를 만드는데 필요한 전부이다. 이제 여기에 외부 라이브러리를 추가할 예정이다. &lt;a href=&quot;https://momentjs.com/&quot;&gt;moment.js&lt;/a&gt;는 날짜 형식을 사람이 읽기 쉬운 형식으로 바꿀때 유용한 라이브러리이다. 예를 들어 아래와 같이 moment함수를 사용할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'day'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromNow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 20 hours ago&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그치만 이건 어디까지나 moment.js를 현재 웹사이트에 포함시켰단 가정하에 이야기이다. &lt;a href=&quot;https://momentjs.com/&quot;&gt;moment.js의 홈페이지&lt;/a&gt;를 방문해 보면 아래와 같은 지시사항을 볼 수 있다.
+&lt;img src=&quot;/assets/post-img/modern-javascript-explained-for-dinosaur/momentjs_install.png&quot; alt=&quot;monent.js install&quot; /&gt;
+오른쪽 인스톨 섹션은 일단 무시하자. index.html이 들어있는 디렉토리에 &lt;code class=&quot;highlighter-rouge&quot;&gt;moment.min.js&lt;/code&gt;를 다운로드 한다. 그러면 아래의 코드처럼 index.html에 &lt;code class=&quot;highlighter-rouge&quot;&gt;moment.min.js&lt;/code&gt;를 추가 시킬 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- index.html --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Example&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;`moment.min.js`&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello from HTML!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;moment.min.js&lt;/code&gt;가 index.js보다 앞서 로드 되고 있다는걸 주의해야한다. 이말은 index.js안에서 moment함수를 사용할 수 있게 되었다는것을 의미한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// index.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello from 자바스크립트!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'day'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromNow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그리고 이게 바로 웹사이트에 자바스크립트 라이브러리를 사용하는 방식이다(완전 구식😜 ). 이해하기 쉽다는게 이 방식의 장점이고, 단점은 라이브러리 제작자가 업데이트를 할 때마다 그것의 새 버전을 매번 찾아야 하고 다운로드하기 번거롭다는 것이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;자바스크립트-패키지-매니저npm-사용하기&quot;&gt;자바스크립트 패키지 매니저(npm) 사용하기&lt;/h1&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[참고] &lt;br /&gt;
+&lt;a href=&quot;https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70&quot;&gt;https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Seongjun Lee</name></author><category term="JavaScript" /><category term="NPM" /><category term="webpack" /><category term="babel" /><summary type="html">Modern JavaScript Explained For Dinosaurs</summary></entry><entry><title type="html">[WEB] PRG 패턴</title><link href="http://localhost:4000/web/2021/01/29/web-prg-pattern/" rel="alternate" type="text/html" title="[WEB] PRG 패턴" /><published>2021-01-29T00:00:00+09:00</published><updated>2021-01-29T00:00:00+09:00</updated><id>http://localhost:4000/web/2021/01/29/web-prg-pattern</id><content type="html" xml:base="http://localhost:4000/web/2021/01/29/web-prg-pattern/">&lt;h1 id=&quot;prg-post-redirect-get-패턴이란&quot;&gt;PRG (POST-Redirect-GET) 패턴이란?&lt;/h1&gt;
 
 &lt;p&gt;PRG 패턴은 웹 개발 시에 권장되는 디자인 패턴 중 하나로, &lt;strong&gt;HTTP POST 요청에 대한 응답이 또 다른 URL로의 GET 요청을 위한 리다이렉트(응답 코드가 3xx)여야 한다는 것&lt;/strong&gt;을 의마한다. 즉, 일반적인 HTTP GET 요청처럼 HTTP POST 요청에 대한 응답이 어떠한 페이지를 직접 반환하는 것은 권장되지 않는 위험한 방식이라는 것이다.&lt;/p&gt;
 
@@ -222,7 +342,7 @@
 		&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;source.fixAll.eslint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 	&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Seongjun Lee</name></author><category term="JavaScript" /><category term="ESLint" /><category term="Prettier" /><category term="Node.js" /><category term="VS Code" /><summary type="html">ESLint와 Prettier를 사용하는 이유 ESLint 적용하기 Prettier 적용하기 ESLint + Prettier Git hook을 이용한 자동화 방법</summary></entry><entry><title type="html">Docker를 사용해서 간단한 로컬 DB 셋팅</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/" rel="alternate" type="text/html" title="Docker를 사용해서 간단한 로컬 DB 셋팅" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/22/make-local-db-container-using-docker/">&lt;h1 id=&quot;목적&quot;&gt;목적&lt;/h1&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Seongjun Lee</name></author><category term="JavaScript" /><category term="ESLint" /><category term="Prettier" /><category term="Node.js" /><category term="VS Code" /><summary type="html">ESLint와 Prettier를 사용하는 이유 ESLint 적용하기 Prettier 적용하기 ESLint + Prettier Git hook을 이용한 자동화 방법</summary></entry><entry><title type="html">Docker를 사용해서 간단한 로컬 DB 셋팅</title><link href="http://localhost:4000/docker/2021/01/22/make-local-db-container-using-docker/" rel="alternate" type="text/html" title="Docker를 사용해서 간단한 로컬 DB 셋팅" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>http://localhost:4000/docker/2021/01/22/make-local-db-container-using-docker</id><content type="html" xml:base="http://localhost:4000/docker/2021/01/22/make-local-db-container-using-docker/">&lt;h1 id=&quot;목적&quot;&gt;목적&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;같은 포트에서 간단한 명령어를 통해 여러 버전, 다양한 DB를 관리하기 위함.&lt;/li&gt;
@@ -362,7 +482,7 @@
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/Users/ddd/Documents/repository/To-do-list-noti2007/DB:/var/lib/mysql&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# -v 옵션 (다렉토리 마운트 설정)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;실행 방법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose up -d&lt;/code&gt; 입니다.&lt;/p&gt;</content><author><name>Seongjun Lee</name></author><category term="Docker" /><category term="DB" /><category term="MySQL" /><summary type="html">목적</summary></entry><entry><title type="html">Vue와 CMS를 이용하여 나의 개발 블로그 만들기</title><link href="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/" rel="alternate" type="text/html" title="Vue와 CMS를 이용하여 나의 개발 블로그 만들기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog</id><content type="html" xml:base="http://localhost:4000/%EC%9D%BC%EC%83%81/2021/01/20/make-dev-blog/">&lt;blockquote&gt;
+&lt;p&gt;실행 방법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose up -d&lt;/code&gt; 입니다.&lt;/p&gt;</content><author><name>Seongjun Lee</name></author><category term="Docker" /><category term="DB" /><category term="MySQL" /><summary type="html">목적</summary></entry><entry><title type="html">Vue와 CMS를 이용하여 나의 개발 블로그 만들기</title><link href="http://localhost:4000/utility/2021/01/20/make-dev-blog/" rel="alternate" type="text/html" title="Vue와 CMS를 이용하여 나의 개발 블로그 만들기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>http://localhost:4000/utility/2021/01/20/make-dev-blog</id><content type="html" xml:base="http://localhost:4000/utility/2021/01/20/make-dev-blog/">&lt;blockquote&gt;
   &lt;p&gt;개발 블로그 만들기&lt;/p&gt;
 &lt;/blockquote&gt;
 
