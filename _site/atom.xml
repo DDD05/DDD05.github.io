@@ -1,20 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-11T10:17:40+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-11T10:22:25+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
 
 &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-&lt;p&gt;모든 npm package는 이름을 가지고있습니다. 그리고 약간의 패키지들은 scope를 가지고있습니다.&lt;/p&gt;
-
-&lt;p&gt;이런 스코프를 가지고있는 패키지들은 이름을 정하는 룰이 있습니다.&lt;/p&gt;
-
-&lt;p&gt;바로 &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; symbol과 slash를 사용하는 것이죠.&lt;/p&gt;
+&lt;p&gt;모든 npm package는 이름을 가지고있습니다. 그리고 약간의 패키지들은 scope를 가지고있습니다. &lt;br /&gt;
+이런 스코프를 가지고있는 패키지들은 이름을 정하는 룰이 있습니다. &lt;br /&gt;
+바로 &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; symbol과 slash를 사용하는 것이죠.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@somescope/somepackagename
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;이것을 &lt;strong&gt;scoped packages&lt;/strong&gt; 라고 부르며 npm에 새로 추가된 기능입니다.&lt;/p&gt;
-
-&lt;p&gt;npm 패키지에 &lt;strong&gt;네임스페이스&lt;/strong&gt;를 적용하여 아래와 같은 규칙을 정합니다.&lt;/p&gt;
-
+&lt;p&gt;이것을 &lt;strong&gt;scoped packages&lt;/strong&gt; 라고 부르며 npm에 새로 추가된 기능입니다.&lt;br /&gt;
+npm 패키지에 &lt;strong&gt;네임스페이스&lt;/strong&gt;를 적용하여 아래와 같은 규칙을 정합니다.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;global modules : 현재 존재하는 컨벤션 네임을 따른 모듈.&lt;/li&gt;
   &lt;li&gt;scoped modules : 조직이나 그룹에 “scoped” 된 새로운 모듈.&lt;/li&gt;

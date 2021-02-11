@@ -11,20 +11,16 @@ description: 'NPM Doce | scope'
 
 ## Description
 
-모든 npm package는 이름을 가지고있습니다. 그리고 약간의 패키지들은 scope를 가지고있습니다.
-
-이런 스코프를 가지고있는 패키지들은 이름을 정하는 룰이 있습니다. 
-
+모든 npm package는 이름을 가지고있습니다. 그리고 약간의 패키지들은 scope를 가지고있습니다. <br>
+이런 스코프를 가지고있는 패키지들은 이름을 정하는 룰이 있습니다. <br>
 바로 `@` symbol과 slash를 사용하는 것이죠.
 
 ```bash
 @somescope/somepackagename
 ```
 
-이것을 **scoped packages** 라고 부르며 npm에 새로 추가된 기능입니다.
-
+이것을 **scoped packages** 라고 부르며 npm에 새로 추가된 기능입니다.<br>
 npm 패키지에 **네임스페이스**를 적용하여 아래와 같은 규칙을 정합니다.
-
 - global modules : 현재 존재하는 컨벤션 네임을 따른 모듈.
 - scoped modules : 조직이나 그룹에 "scoped" 된 새로운 모듈.
 
