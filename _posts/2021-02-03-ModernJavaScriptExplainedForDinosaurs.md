@@ -304,6 +304,93 @@ $ ./node_modules/.bin/webpack
 
 # 언어의 새로운 기능을 사용하기 위한 transpiling (bable)
 
+코드를 트랜스파일(transpile) 한다는 것은 어떤 한 언어로 작성 된 코드를 비슷하지만 다른 언어롤 변환 시켜준다는 것이다. 이것은 프론트엔드 개발에 있어 중요한 부분이다. 브라우저는 언어의 새로운 기능을 추가 지원 해주는 데에 늘 지원이 늦은 부분이 있기때문에 새언어의 실험적인 기능은 브라우저에 호환되는 언어로 트랜스파일 해야한다.
+
+CSS로 따지면 [Sass](http://sass-lang.com/), [Less](http://lesscss.org/) 그리고 [Stylus](http://stylus-lang.com/) 등이 있다. 자바스크립트는 가장 인기있었던 트랜스파일러는 [CoffeeScript](http://coffeescript.org/) 이었고, 현재는 대부분의 사람들이 [babel](https://babeljs.io/) 또는 [TypeScript](http://www.typescriptlang.org/)를 사용한다. CoffeeScript는 임의의 괄호, 의미있는 공백들을 적용함으로써 자바스크립트를 발전시키는데 초점을 맞추고 있다. Babel은 새로운 언어는 아니지만 아직 모든 브라우저에서 사용활 수 없는 다른 버전의 자바스크립트(ES2015 이후)의 기능을 오래되고 호환 가능한 자바스크립트(ES5)로 트랜스파일 해주는 트랜스파일러이다. TypeScript는 기본적으로 다음 세대 자바스크립트와 같지만 임의의 정적 형지정(typeing)을 추가하는 언어이다. 지금은 많은 사람들이 babel을 선택해서 사용하고 있다. 이것이 바닐라스크립트와 가장 가깝기 때문이다.
+
+babel을 어떻게 사용하는지 이미 만들어 둔 webpack 빌드 과정과 함께 그 예시를 확인해보자. 먼저 babel을 우리 프로젝트에 커맨드라인으로 설치 해야한다. babel은 npm package이기 때문에 아래 명령어로 설치 가능하다.
+
+```sh
+$ npm install @babel/core @babel/preset-env babel-loader --save-dev
+```
+
+개발 의존성으로 3가지 별도의 패키지를 설치하고 있는 것을 확인해야한다.
+`babel-core`는 babel의 핵심부이다. `babel-preset-env`는 어떠한 자바스크립트 새 기능을 트랜스파일할지에 대한 사전정의(preset)이다. `babel-loader`는 babel이 webpack과 함께 일 할수있게 해주는 패키지이다. 이것으로 `webpack.config.js`를 아래와 같이 수정하여 `babel-loader`를 사용할 수 있다.
+
+```js
+// webpack.config.js
+module.exports = {
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    filename: 'main.js',
+    publicPath: 'dist'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+기본적으로 이 설정을 통해 webpack에게 모든 .js파일을 지켜보도록 시키고 있다(`node_modules`의 항목은 제외). 그리고 `babel-preset-env`로 사전정의 된 babel-loader를 사용하여 babel의 트랜스파일을 적용한다. 
+
+위와같이 설정한다면 ES5의 기능을 사용할 수 있다는 말이다. 
+
+```js
+// index.js
+var moment = require('moment');
+console.log("Hello from 자바스크립트!");
+console.log(moment().startOf('day').fromNow());
+var name = "Bob", time = "today";
+console.log(`Hello ${name}, how are you ${time}?`);
+```
+
+`require` 대신 **ES5 import 구문**을 모듈 로딩에 사용할 수 있다. <br>
+`import` 문법은 `require` 문법과 많이 다르지 않다. 그러나 더욱 진복한 상황에서 전자가 추가적인 유연성을 갖고 있다. 
+
+```js
+// index.js
+import moment from 'moment';
+console.log("Hello from 자바스클비트!");
+console.log(moment().startOf('day').fromNow());
+var name = "Bob", time = "today";
+console.log(`Hello ${name}, how are you ${time}?`);
+```
+
+위와같이 `index.js`를 수정한 뒤 아래 명령어를 통해 webpack을 다시 수동해줘야한다.
+
+```sh
+$ ./node_modules/.bin/ webpack
+```
+
+이제 브라우저에서 `index.html`을 새로고침하면 정상적으로 동작하는 것을 볼 수 있다. 대부분의 브라우저들이 모든 ES5 기능을 지원하고 있을것이다. babel이 작업된 내용을 확이하고 싶다면 `dist/main.js`을 열어서 트랜스파일된 코드를 확인해보면된다.
+
+```js
+// dist/main.js
+// ...
+console.log(\"Hello \".concat(name, \", how are you \").concat(time, \"?\"));
+// ...
+```
+
+브라우저 호환성을 맞춰주기 위해 ES2015 템플릿 문자열이 일반적인 자바스크립트 문자열 연쇄로 트랜스파일 된 모습을 볼 수 있다. 트랜스파일 코드의 능력은 아주 강력한 것이기 때문에 중요한 내용이다. 오늘 당장 사용하여 더 좋은 코드를 작성활 수 잇게 해줄 [async/await]() 같은 언어의 재미난 기능이 나올것이다, 그리고 트랜스파일을 통해 더욱 확장된 기능을 사용할 수 있게된것이다.
+
+마지막 워크플로우로는 성능에대한 이슈이다. 안약 성능을 고려한다면, 번들 파일을 [축소](https://en.wikipedia.org/wiki/Minification_%28programming%29)시킬 필요가 있다. 우리가 이미 빌드과정을 결합시켜 놨으니 이 과정을 무척 쉬울것이다. 또 지금은 자바스크립트가 변경될때마다 webpack 커맨드를 재실행 시켜줘야 한다. 그래서 다음 단계에서는 이를 해결하기 위한 편리한 도구들을 찾아본다.
+
+<br>
+
+# 태스크러너 사용하기 (npm scripts)
+
 
 
 <br>

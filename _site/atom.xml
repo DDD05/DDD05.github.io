@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-11T10:22:25+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-12T10:11:27+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
 
 &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
@@ -327,6 +327,87 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;언어의-새로운-기능을-사용하기-위한-transpiling-bable&quot;&gt;언어의 새로운 기능을 사용하기 위한 transpiling (bable)&lt;/h1&gt;
+
+&lt;p&gt;코드를 트랜스파일(transpile) 한다는 것은 어떤 한 언어로 작성 된 코드를 비슷하지만 다른 언어롤 변환 시켜준다는 것이다. 이것은 프론트엔드 개발에 있어 중요한 부분이다. 브라우저는 언어의 새로운 기능을 추가 지원 해주는 데에 늘 지원이 늦은 부분이 있기때문에 새언어의 실험적인 기능은 브라우저에 호환되는 언어로 트랜스파일 해야한다.&lt;/p&gt;
+
+&lt;p&gt;CSS로 따지면 &lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt;, &lt;a href=&quot;http://lesscss.org/&quot;&gt;Less&lt;/a&gt; 그리고 &lt;a href=&quot;http://stylus-lang.com/&quot;&gt;Stylus&lt;/a&gt; 등이 있다. 자바스크립트는 가장 인기있었던 트랜스파일러는 &lt;a href=&quot;http://coffeescript.org/&quot;&gt;CoffeeScript&lt;/a&gt; 이었고, 현재는 대부분의 사람들이 &lt;a href=&quot;https://babeljs.io/&quot;&gt;babel&lt;/a&gt; 또는 &lt;a href=&quot;http://www.typescriptlang.org/&quot;&gt;TypeScript&lt;/a&gt;를 사용한다. CoffeeScript는 임의의 괄호, 의미있는 공백들을 적용함으로써 자바스크립트를 발전시키는데 초점을 맞추고 있다. Babel은 새로운 언어는 아니지만 아직 모든 브라우저에서 사용활 수 없는 다른 버전의 자바스크립트(ES2015 이후)의 기능을 오래되고 호환 가능한 자바스크립트(ES5)로 트랜스파일 해주는 트랜스파일러이다. TypeScript는 기본적으로 다음 세대 자바스크립트와 같지만 임의의 정적 형지정(typeing)을 추가하는 언어이다. 지금은 많은 사람들이 babel을 선택해서 사용하고 있다. 이것이 바닐라스크립트와 가장 가깝기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;babel을 어떻게 사용하는지 이미 만들어 둔 webpack 빌드 과정과 함께 그 예시를 확인해보자. 먼저 babel을 우리 프로젝트에 커맨드라인으로 설치 해야한다. babel은 npm package이기 때문에 아래 명령어로 설치 가능하다.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install @babel/core @babel/preset-env babel-loader &lt;span class=&quot;nt&quot;&gt;--save-dev&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;개발 의존성으로 3가지 별도의 패키지를 설치하고 있는 것을 확인해야한다.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-core&lt;/code&gt;는 babel의 핵심부이다. &lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;는 어떠한 자바스크립트 새 기능을 트랜스파일할지에 대한 사전정의(preset)이다. &lt;code class=&quot;highlighter-rouge&quot;&gt;babel-loader&lt;/code&gt;는 babel이 webpack과 함께 일 할수있게 해주는 패키지이다. 이것으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;를 아래와 같이 수정하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;babel-loader&lt;/code&gt;를 사용할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// webpack.config.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'development'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./index.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'main.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;publicPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'dist'&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/node_modules/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'@babel/preset-env'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;기본적으로 이 설정을 통해 webpack에게 모든 .js파일을 지켜보도록 시키고 있다(&lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt;의 항목은 제외). 그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;로 사전정의 된 babel-loader를 사용하여 babel의 트랜스파일을 적용한다.&lt;/p&gt;
+
+&lt;p&gt;위와같이 설정한다면 ES5의 기능을 사용할 수 있다는 말이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// index.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'moment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello from 자바스크립트!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'day'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromNow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Bob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;today&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`Hello &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, how are you &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 대신 &lt;strong&gt;ES5 import 구문&lt;/strong&gt;을 모듈 로딩에 사용할 수 있다. &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; 문법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 문법과 많이 다르지 않다. 그러나 더욱 진복한 상황에서 전자가 추가적인 유연성을 갖고 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// index.js&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'moment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello from 자바스클비트!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'day'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromNow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Bob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;today&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`Hello &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, how are you &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와같이 &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;를 수정한 뒤 아래 명령어를 통해 webpack을 다시 수동해줘야한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./node_modules/.bin/ webpack
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 브라우저에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;을 새로고침하면 정상적으로 동작하는 것을 볼 수 있다. 대부분의 브라우저들이 모든 ES5 기능을 지원하고 있을것이다. babel이 작업된 내용을 확이하고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/main.js&lt;/code&gt;을 열어서 트랜스파일된 코드를 확인해보면된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// dist/main.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.concat(name, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, how are you &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;).concat(time, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;));
+// ...
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;브라우저 호환성을 맞춰주기 위해 ES2015 템플릿 문자열이 일반적인 자바스크립트 문자열 연쇄로 트랜스파일 된 모습을 볼 수 있다. 트랜스파일 코드의 능력은 아주 강력한 것이기 때문에 중요한 내용이다. 오늘 당장 사용하여 더 좋은 코드를 작성활 수 잇게 해줄 &lt;a href=&quot;&quot;&gt;async/await&lt;/a&gt; 같은 언어의 재미난 기능이 나올것이다, 그리고 트랜스파일을 통해 더욱 확장된 기능을 사용할 수 있게된것이다.&lt;/p&gt;
+
+&lt;p&gt;마지막 워크플로우로는 성능에대한 이슈이다. 안약 성능을 고려한다면, 번들 파일을 &lt;a href=&quot;https://en.wikipedia.org/wiki/Minification_%28programming%29&quot;&gt;축소&lt;/a&gt;시킬 필요가 있다. 우리가 이미 빌드과정을 결합시켜 놨으니 이 과정을 무척 쉬울것이다. 또 지금은 자바스크립트가 변경될때마다 webpack 커맨드를 재실행 시켜줘야 한다. 그래서 다음 단계에서는 이를 해결하기 위한 편리한 도구들을 찾아본다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;태스크러너-사용하기-npm-scripts&quot;&gt;태스크러너 사용하기 (npm scripts)&lt;/h1&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
