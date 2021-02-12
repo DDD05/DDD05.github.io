@@ -391,6 +391,124 @@ console.log(\"Hello \".concat(name, \", how are you \").concat(time, \"?\"));
 
 # 태스크러너 사용하기 (npm scripts)
 
+지금까지 빌드 단계를 사용하여 자바스크립트 모듈로 일하고 있으므로 태스크러너를 사용하여 **각기 다른 부분의 빌드 프로세스를 자동화 해주는 도구**를 사용할 것이다. 프론트엔드 개발에 있어 태스크란 코드 압축(minify), 이미지 최적화, 테스트 실행 등을 말한ㄷ.
+
+2013년, Grunt가 가장 인기 있는 프론트엔드 태스크러너였고, Gulp가 뒤를 이었다. 둘 모두 다른 커맨드라인 도구를 두르고있는 플러그인에 기대고있다. 요즘은 가장 인기 있는 npm 패키지 매니저 자체의 스크립팅 가용성을 이용하고 있다. 따라서 따로 plugin을 사용하지 않고 다른 커맨드라인 도구와 직접 작업한다.
+
+npm 스크립트를 작성해서 webpack 사용을 좀 더 쉽게 만들어 보자. <br>
+`package.json`을 조금 수정한다.
+
+```json
+{
+  "name": "modern-javascript-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --mode=production",
+    "watch": "webpack --progress --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
+```
+
+`build`와 `watch`라는 두 새로운 스크립트가 추가되었다. `build` 스크립트를 구동하려면 커맨드라인을 아래와 같이 입력하면된다.
+
+```sh
+$ npm run build
+```
+
+이를 통해 webpack(이전에 만들어 둔 `webpack.config.js`를 설정으로 사용)이 구동되는데 `--progress` 옵션을 주면 진행 정도를 백분율로 보여주며 `-p` 옵션을 주면 제품용 코드를 압축하게 된다. `watch` 스크립트를 구동하려면 아래와 같다.
+
+```sh
+$ npm run watch
+```
+이것은 `--watch` 옵션을 사용하고 있기 때문에 자바스크립트가 수정될 때마다 자동으로 webpack을 재실행 해준다.
+
+`package.json`의 스크립트에 webpack의 완전한 전체경로 `./node_modules/.bin/webpack`이 없어도 구동할 수 있는 점을 주목해야한다..!! node.js가 각각의 npm모듈 경로를 알고 있기 때문이다. 심지어 webpack-devserver를 설치하면 더 좋은 기능을 사용할 수 있다. 실시간 다시 불러오기(live reloading) 기능과 함께 단순한 웹 서버를 제공하는 별도의 도구이다. 개발 의존성으로 설치하려면 다음과 같다.
+
+```sh
+$ npm install webpack-dev-server --save-dev
+```
+
+그리고나서 `package.json`에 다음과 같이 npm 스크립트가 추가한다.
+
+```json
+{
+  "name": "modern-javascript-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress -p",
+    "watch": "webpack --progress --watch",
+    "server": "webpack-dev-server --open"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.19.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^3.1.6"
+  }
+}
+```
+
+이제 개발용 서버를 아래의 커맨드로 실행 시킬 수 있다.
+
+```sh
+$ npm run server
+```
+
+이걸로 `index.html` 웹사이트가 브라우저에 `localhost:8080`(기본값)으로써 자동으로 열린다. 이제 언제든지 `index.js`의 자바스크립트를 수정하면, webpack-dev-server는 번들 된 자바스크립트를 다시 빌드하고 브라우저를 자동으로 새로고침 할 것이다. 
+
+> 🔨 webpack-dev-server가 실행이 안된다면!! webpack-cli 버전을 낮춰서 다시 시작해보세요(의존성 문제). <br> 
+```sh
+$ npm install --save-dev webpack webpack-cli webpack-dev-server
+```
+>   <details>
+        <summary>필자의 당시 버전😄 </summary>
+        <pre>
+        // package.json
+        // ...
+        "devDependencies": {
+            // ...
+            "webpack": "^5.21.2",
+            "webpack-cli": "^3.3.12",
+            "webpack-dev-server": "^3.11.2"
+        }
+        </pre>
+    </details>
+
+
+이보다 훨씬 많은 옵션들이 webpack과 webpack-dev-server에 존재한다. 당연히 다른 태스크를 위해 npm 스크립트를 작성할 수 있다. Sass를 CSS로 변환하는 일,  이미지를 압축 하는 일, 테스트를 실행하는 일 등 커맨드라인 tool만 있으면된다. 또한 엄청 고급 옵션과 트릭들이 npm 스크립트 자체에 있다.
+
+**[참고영상]**
+<iframe width="640" height="360" src="https://www.youtube.com/embed/0RYETb9YVrk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+
+# 결론
+
+
 
 
 <br>
