@@ -243,7 +243,7 @@ $ npm install webpack webpack-cli --save-dev
   },
   "devDependencies": {
     "webpack": "^5.21.2",
-    "webpack-cli": "^4.5.0"
+    "webpack-cli": "^3.3.12",
   }
 }
 ```
