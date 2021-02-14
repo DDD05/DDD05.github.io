@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-13T22:22:43+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-14T09:04:40+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">슬기로운 개발생활</title><subtitle>슬기로운 개발생활</subtitle><author><name>Seongjun Lee</name></author><entry><title type="html">scoped packages - npm package 앞에 골뱅이란?</title><link href="http://localhost:4000/npm/2021/02/09/scoped-packages/" rel="alternate" type="text/html" title="scoped packages - npm package 앞에 골뱅이란?" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>http://localhost:4000/npm/2021/02/09/scoped%20packages</id><content type="html" xml:base="http://localhost:4000/npm/2021/02/09/scoped-packages/">&lt;h1 id=&quot;scoped-packages&quot;&gt;Scoped packages&lt;/h1&gt;
 
 &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
@@ -519,6 +519,17 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;결론&quot;&gt;결론&lt;/h1&gt;
+
+&lt;p&gt;단순 HTML과 JS를 시작으로 패키지 매니저를 써서 3rd 패키지들을 자동으로 다운로드하고, 모듈 번들러를 사용해서 단일 스크립트 파일을 만들어내고, 트랜스파일러를 이용해서 미래의 자바스크립트 기능들을 사용했으며, 그리고 태스크러너로 다른 부분의 빌드 과정을 자동화 했다.&lt;/p&gt;
+
+&lt;p&gt;프론트엔드와 함께 작업할 실행가능한 방법으로써 node 생태계를 적용하면 상황은 꽤 안정화된다. npm을 패키지 매니저로 사용하는 것, node &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt;나 &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; 구문을 모듈을 위해 사용하는 것, 그리고 npm 스크립트로 태스크를 수행하는 것 등…&lt;/p&gt;
+
+&lt;p&gt;요즘은 프레임워크가 위 과정을 더 쉽게 시작할 수 있도록 해주는 도구를 제공한다는 것이다. Ember는 Angular의 &lt;a href=&quot;https://cli.angular.io/&quot;&gt;angular-cli&lt;/a&gt;로 부터 영향을 받은 &lt;a href=&quot;https://ember-cli.com/&quot;&gt;ember-cli&lt;/a&gt;를 갖고 있고, React는 &lt;a href=&quot;https://github.com/facebookincubator/create-react-app&quot;&gt;create-react-app&lt;/a&gt;, Vue는 &lt;a href=&quot;https://github.com/vuejs/vue-cli&quot;&gt;vue-cli&lt;/a&gt;등을 갖고 있다. &lt;br /&gt;
+이 모든 도구들은 프로젝트를 구성해준다. 프로젝트에 필요한 모든것과 함께. 우리가 해야할 일은 그저 코드를 작성하기 시작하는 것 밖에 없다. 그렇다고해서 무시하거나 방관해서는 안된다. 이 도구들은 일관되고 잘 동작하는 방식으로 모든 것을 구성할 뿐 종종 별도의 webpack, babel, 기타등등의 설정이 필요한 부분을 마주치게 되기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;지금도 자바스크립트의 생태계는 급격하게 진화하고있다. hot-reloading, 실시간 문법 검사, time-travel debugging과 같은 혁신에 도움을 주고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://steemitimages.com/640x0/https://steemitimages.com/DQmXzUJqgkgtPD4xQKtKEQmm5SzB4chkU53GBtAWq4qwLor/modern_dino_4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 

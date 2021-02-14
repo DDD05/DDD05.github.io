@@ -508,6 +508,16 @@ $ npm install --save-dev webpack webpack-cli webpack-dev-server
 
 # 결론
 
+단순 HTML과 JS를 시작으로 패키지 매니저를 써서 3rd 패키지들을 자동으로 다운로드하고, 모듈 번들러를 사용해서 단일 스크립트 파일을 만들어내고, 트랜스파일러를 이용해서 미래의 자바스크립트 기능들을 사용했으며, 그리고 태스크러너로 다른 부분의 빌드 과정을 자동화 했다. 
+
+프론트엔드와 함께 작업할 실행가능한 방법으로써 node 생태계를 적용하면 상황은 꽤 안정화된다. npm을 패키지 매니저로 사용하는 것, node `require`나 `import` 구문을 모듈을 위해 사용하는 것, 그리고 npm 스크립트로 태스크를 수행하는 것 등...
+
+요즘은 프레임워크가 위 과정을 더 쉽게 시작할 수 있도록 해주는 도구를 제공한다는 것이다. Ember는 Angular의 [angular-cli](https://cli.angular.io/)로 부터 영향을 받은 [ember-cli](https://ember-cli.com/)를 갖고 있고, React는 [create-react-app](https://github.com/facebookincubator/create-react-app), Vue는 [vue-cli](https://github.com/vuejs/vue-cli)등을 갖고 있다. <br>
+이 모든 도구들은 프로젝트를 구성해준다. 프로젝트에 필요한 모든것과 함께. 우리가 해야할 일은 그저 코드를 작성하기 시작하는 것 밖에 없다. 그렇다고해서 무시하거나 방관해서는 안된다. 이 도구들은 일관되고 잘 동작하는 방식으로 모든 것을 구성할 뿐 종종 별도의 webpack, babel, 기타등등의 설정이 필요한 부분을 마주치게 되기 때문이다. 
+
+지금도 자바스크립트의 생태계는 급격하게 진화하고있다. hot-reloading, 실시간 문법 검사, time-travel debugging과 같은 혁신에 도움을 주고 있다. 자바스크립트 화이팅 ~! 😘
+
+![](https://steemitimages.com/640x0/https://steemitimages.com/DQmXzUJqgkgtPD4xQKtKEQmm5SzB4chkU53GBtAWq4qwLor/modern_dino_4.png)
 
 
 
