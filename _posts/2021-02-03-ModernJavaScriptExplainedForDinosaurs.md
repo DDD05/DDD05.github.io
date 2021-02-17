@@ -430,7 +430,7 @@ npm 스크립트를 작성해서 webpack 사용을 좀 더 쉽게 만들어 보�
 $ npm run build
 ```
 
-이를 통해 webpack(이전에 만들어 둔 `webpack.config.js`를 설정으로 사용)이 구동되는데 `--progress` 옵션을 주면 진행 정도를 백분율로 보여주며 `-p` 옵션을 주면 제품용 코드를 압축하게 된다. `watch` 스크립트를 구동하려면 아래와 같다.
+이를 통해 webpack(이전에 만들어 둔 `webpack.config.js`를 설정으로 사용)이 구동되는데 `--progress` 옵션을 주면 진행 정도를 백분율로 보여주며 `--mode=production` 옵션을 주면 제품용 코드를 압축하게 된다. `watch` 스크립트를 구동하려면 아래와 같다.
 
 ```sh
 $ npm run watch
@@ -453,7 +453,7 @@ $ npm install webpack-dev-server --save-dev
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress -p",
+    "build": "webpack --progress --mode=production",
     "watch": "webpack --progress --watch",
     "server": "webpack-dev-server --open"
   },
