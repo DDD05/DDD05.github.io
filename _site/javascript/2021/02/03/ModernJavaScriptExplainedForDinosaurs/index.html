@@ -266,18 +266,6 @@
         
         
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
-        
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -901,7 +889,7 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
 <div class="language-sh highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nv">$ </span>npm run build
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>이를 통해 webpack(이전에 만들어 둔 <code class="highlighter-rouge">webpack.config.js</code>를 설정으로 사용)이 구동되는데 <code class="highlighter-rouge">--progress</code> 옵션을 주면 진행 정도를 백분율로 보여주며 <code class="highlighter-rouge">-p</code> 옵션을 주면 제품용 코드를 압축하게 된다. <code class="highlighter-rouge">watch</code> 스크립트를 구동하려면 아래와 같다.</p>
+<p>이를 통해 webpack(이전에 만들어 둔 <code class="highlighter-rouge">webpack.config.js</code>를 설정으로 사용)이 구동되는데 <code class="highlighter-rouge">--progress</code> 옵션을 주면 진행 정도를 백분율로 보여주며 <code class="highlighter-rouge">--mode=production</code> 옵션을 주면 제품용 코드를 압축하게 된다. <code class="highlighter-rouge">watch</code> 스크립트를 구동하려면 아래와 같다.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nv">$ </span>npm run watch
 </code></pre></td></tr></tbody></table></div></div>
@@ -921,7 +909,7 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
   </span><span class="s2">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack --progress -p"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack --progress --mode=production"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"watch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack --progress --watch"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack-dev-server --open"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -1141,7 +1129,7 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
                alt="Seongjun Lee" />
           <p class="site-author-name" itemprop="name">Seongjun Lee</p>
            
-              <p class="site-description motion-element" itemprop="description">개발하면서 쌓아가는 지식을 공유하는 공간.</p>
+              <p class="site-description motion-element" itemprop="description">개발하면서 쌓아가는 지식을 공유하는 공간</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -1149,7 +1137,7 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">포스트</span>
               </a>
             </div>
@@ -1160,7 +1148,7 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">카테고리</span>
               </a>
             </div>
@@ -1171,7 +1159,7 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">태그</span>
               </a>
             </div>
@@ -1201,6 +1189,28 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
                     <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/lee.ddd05/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://www.notion.so/donaldd/About-e6685e53f5b64a8da1ca60270cb8aef4" target="_blank" title="About">
+                  
+                    <i class="fa fa-fw fa-about"></i>
+                  
+                  About
                 </a>
               </span>
             
@@ -1272,13 +1282,13 @@ node.js가 컴퓨터의 파일 시스템에 접근 가능한 서버 사이드 �
 
 
 <div class="powered-by">
-  Dev blog - <a class="theme-link" href="https://ddd05.github.io">슬기로운 개발생활</a>
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
 </div>
 
 <div class="theme-info">
-  GitHub -
-  <a class="theme-link" href="https://github.com/ddd05">
-    DDD05
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
   </a>
 </div>
 

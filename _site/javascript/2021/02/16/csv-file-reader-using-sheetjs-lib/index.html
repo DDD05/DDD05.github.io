@@ -83,7 +83,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,ESLint,Prettier,Node.js,VS Code," />
+  <meta name="keywords" content="NPM,JavaScript,SheetJS,Excel,FileReader," />
 
 
 
@@ -129,17 +129,21 @@
 
 
 
-<meta name="description" content="ESLint를 설명하고 적용하는 방법을 설명합니다. 추가적으로 Prettier를 적용합니다.">
-<meta name="keywords" content="JavaScript, ESLint, Prettier, Node.js, VS Code">
+<meta name="description" content="SheetJS 라이브러리를 사용해서 Excel 파일을 읽는 방법과 코드">
+<meta name="keywords" content="NPM, JavaScript, SheetJS, Excel, FileReader">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ESLint &amp; Prettier">
-<meta property="og:url" content="http://localhost:4000/javascript/2021/01/26/eslint-prettier/">
+<meta property="og:title" content="JavaScript로 엑셀 파일 읽기">
+<meta property="og:url" content="http://localhost:4000/javascript/2021/02/16/csv-file-reader-using-sheetjs-lib/">
 <meta property="og:site_name" content="슬기로운 개발생활">
-<meta property="og:description" content="ESLint를 설명하고 적용하는 방법을 설명합니다. 추가적으로 Prettier를 적용합니다.">
+<meta property="og:description" content="SheetJS 라이브러리를 사용해서 Excel 파일을 읽는 방법과 코드">
 <meta property="og:locale" content="ko">
+<meta property="og:image" content="/assets/post-img/csv-file-reader-using-sheetjs/excelimg.png">
+<meta property="og:image" content="/assets/post-img/csv-file-reader-using-sheetjs/excelprintimg.png">
+<meta property="og:image" content="/assets/post-img/csv-file-reader-using-sheetjs/performance.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ESLint &amp; Prettier">
-<meta name="twitter:description" content="ESLint를 설명하고 적용하는 방법을 설명합니다. 추가적으로 Prettier를 적용합니다.">
+<meta name="twitter:title" content="JavaScript로 엑셀 파일 읽기">
+<meta name="twitter:description" content="SheetJS 라이브러리를 사용해서 Excel 파일을 읽는 방법과 코드">
+<meta name="twitter:image" content="/assets/post-img/csv-file-reader-using-sheetjs/excelimg.png">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -172,7 +176,7 @@
 
 
 
-  <title>ESLint & Prettier | 슬기로운 개발생활</title>
+  <title>JavaScript로 엑셀 파일 읽기 | 슬기로운 개발생활</title>
   
 
 
@@ -344,7 +348,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/javascript/2021/01/26/eslint-prettier/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/javascript/2021/02/16/csv-file-reader-using-sheetjs-lib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Seongjun Lee">
@@ -364,7 +368,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            ESLint & Prettier
+            JavaScript로 엑셀 파일 읽기
           
         </h1>
         
@@ -378,8 +382,8 @@
               
                 <span class="post-meta-item-text">작성일</span>
               
-              <time title="" itemprop="dateCreated datePublished" datetime="2021-01-26T00:00:00+09:00">
-                2021-01-26
+              <time title="" itemprop="dateCreated datePublished" datetime="2021-02-16T00:00:00+09:00">
+                2021-02-16
               </time>
             
 
@@ -420,9 +424,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/javascript/2021/01/26/eslint-prettier/#comments" itemprop="discussionUrl">
+                <a href="/javascript/2021/02/16/csv-file-reader-using-sheetjs-lib/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="/javascript/2021/01/26/eslint-prettier/" itemprop="commentCount"></span>
+                        data-disqus-identifier="/javascript/2021/02/16/csv-file-reader-using-sheetjs-lib/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,7 +442,7 @@
           
             
                 <div class="post-description">
-                    ESLint를 설명하고 적용하는 방법을 설명합니다. 추가적으로 Prettier를 적용합니다.
+                    SheetJS 라이브러리를 사용해서 Excel 파일을 읽는 방법과 코드
                 </div>
             
           
@@ -468,199 +472,135 @@
 
 
 
-  <blockquote>
-  <ol>
-    <li>ESLint와 Prettier를 사용하는 이유</li>
-    <li>ESLint 적용하기</li>
-    <li>Prettier 적용하기</li>
-    <li>ESLint + Prettier</li>
-    <li>Git hook을 이용한 자동화 방법</li>
-  </ol>
+  <h1 id="-스토리">📖 스토리</h1>
+
+<p>서버측에서 엑셀 파일을 리드하여 원하는 작업을 수행하는 작업이 있었는데 엑셀 파일에 대량(5만개 정도)의 데이터보다 초과일때 response time이 예상보다 길어지는 이슈가 생겼다. 또 그 응답속도를 예측 할 수 없었기에 한정된 데이터의 크기만큼만 전송 가능하도록 하기로 했습니다.</p>
+
+<blockquote>
+  <p>프론트단에서 엑셀 파일을 리드하고 데이터 갯수를 카운팅하는 로직을 수행하고자합니다.</p>
 </blockquote>
 
-<p><br /></p>
+<p>서버측 기술없이 클라이언트 기술로만 로컬에 저장된 엑셀 파일을 다룰 수 있는 라이브러리인 <a href="https://github.com/SheetJS/sheetjs">SheetJS</a>를 사용하여 엑셀 파일을 읽는 방법을 JS코드로 정리해 봅니다.</p>
 
-<h1 id="eslint와-prettier를-사용하는-이유">ESLint와 Prettier를 사용하는 이유</h1>
+<p>해당 라이브러리는 별도로 다운로드 없이 CDN을 통해 이요할 수 있습니다.</p>
 
-<p>ESLint와 Prettier는 보통 프로젝트 시작 단계(초기 셋팅)에서 코드 포맷팅과 코드 품질을 위해서 사용합니다.</p>
-
-<ul>
-  <li>코드 포맷팅 : 코드 컨벤션을 설정하기 위함.</li>
-  <li>코드 품질 : 잠재적인 오류나 버그를 찾는 역할</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="eslint-적용하기">ESLint 적용하기</h1>
-
-<h2 id="목적">목적</h2>
-
-<p>코드 검사 및 수정</p>
-
-<h2 id="적용-방법">적용 방법</h2>
-
-<ol>
-  <li>
-    <p>node.js 설치가 필수, node package를 이용.</p>
-
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code> <span class="c1">// .eslintrc.js</span>
- <span class="nx">module</span><span class="p">.</span><span class="k">export</span> <span class="o">=</span> <span class="p">{</span>
- 	<span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
- 		<span class="s1">'no-unexpected-multiline'</span><span class="p">:</span> <span class="s1">'error'</span><span class="p">,</span>
- 		<span class="s1">'no-extra-semi'</span><span class="p">:</span> <span class="s1">'error'</span><span class="p">,</span>
- 	<span class="p">},</span>
- <span class="p">};</span>
-
- <span class="c1">// package.json &gt; script : { "lint" :  "eslint src" }</span>
- <span class="c1">// src에 해당하는 모든 코드를 검사</span>
-
- <span class="c1">// npm run lint 명렁어 실행</span>
-</code></pre></td></tr></tbody></table></div>    </div>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">package.json</code> 파일 아래에 script 문에 <code class="highlighter-rouge">{ "lint" : "eslint src" }</code>를 작성합니다.
-이것으로 <code class="highlighter-rouge">npm run lint</code> 명령어를 실행하면 <code class="highlighter-rouge">src</code>에 해당하는 모든 코드를 검사합니다.</p>
-
-    <p><code class="highlighter-rouge">--fix</code> 옵션을 이용하여 잘못된 부분은 수정되도록 설정도 가능합니다.</p>
-  </li>
-</ol>
-
-<ul>
-  <li><a href="https://eslint.org/docs/rules/">eslint.org/docs/rules</a> 을 참고하면 스패너 모양은 <code class="highlighter-rouge">--fix</code> 옵션을 이용하여 수정 가능 하다는 것을 알려줍니다.</li>
-  <li>
-    <p>✔️ 표시가 되어있는 경우 <code class="highlighter-rouge">"extends" : "eslint:recommended"</code> 를 적용했을 경우 적용되는 룰입니다.</p>
-
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code><span class="c1">// .eslintrc.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="k">export</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">extends</span><span class="p">:</span> <span class="p">[</span><span class="s1">'eslint:recommended'</span><span class="p">],</span>
-<span class="p">};</span>
-</code></pre></td></tr></tbody></table></div>    </div>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="prettier-적용하기">Prettier 적용하기</h1>
-
-<h2 id="목적-1">목적</h2>
-
-<p>코드 포맷팅, 코드의 일관성을 유지할 수 있습니다.</p>
-
-<h2 id="적용-방법-1">적용 방법</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code><span class="nv">$ </span>npm install prettier      // 설치
-<span class="nv">$ </span>npx prettier src/<span class="k">**</span>/<span class="k">*</span>     // 실행
-<span class="nv">$ </span>npx prettier src/<span class="k">**</span>/<span class="k">*</span> <span class="nt">--write</span>     // 실행 후 적용
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>prettier는 eslint와 달리 규칙이 미리 셋팅되어있습니다. 따라서 추가 설정업시 바로 사용이 가능합니다.</p>
+<p>이번에 읽을 엑셀 파일 (행이 5만개 정도) ⬇️</p>
+
+<p><img src="/assets/post-img/csv-file-reader-using-sheetjs/excelimg.png" alt="" /></p>
 
 <p><br /></p>
 
-<h1 id="eslint--prettier">ESLint + Prettier</h1>
+<h1 id="비동기적-수행">비동기적 수행</h1>
 
-<p>코드 포맷팅을 맞추더라도 코드 품질과 관련된 검사는 ESLint의 몫입니다.</p>
+<h2 id="코드">코드</h2>
 
-<p>ESLint는 prettier와 통합하는 방법을 제공해줍니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39</pre></td><td class="code"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Read CSV File<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="nf">#input-box</span> <span class="p">{</span>
+            <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+            <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ddd</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"input-box"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"csv-file"</span> <span class="na">onchange=</span><span class="s">"readExcel()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-<ul>
-  <li><code class="highlighter-rouge">eslint-config-prettier</code>와 <code class="highlighter-rouge">eslint-plugin-prettier</code></li>
-  <li>
-    <p>prettier 포맷팅 규칙을 eslint에 추가합니다. 서로 충돌하는 옵션이 있다면 prettier의 규칙을 사용하도록 하는 도구입니다.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nv">$ </span>npm install eslint-config-prettier eslint-plugin-prettier
-</code></pre></td></tr></tbody></table></div>    </div>
-
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code><span class="c1">// .eslintrc.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="k">export</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">extends</span><span class="p">:</span> <span class="p">[</span><span class="s1">'eslint:recommended'</span><span class="p">,</span> <span class="s1">'plugin:prettier/recommended'</span><span class="p">],</span>
-<span class="p">};</span>
-</code></pre></td></tr></tbody></table></div>    </div>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="git-hook을-이용한-자동화-방법">Git hook을 이용한 자동화 방법</h1>
-
-<h2 id="git-hook이란">Git hook이란?</h2>
-
-<p><code class="highlighter-rouge">husky를 이용</code>, 커밋 시점에 어떤 일을 작동시킬 수 있습니다. 이것을 이용해서 커밋 시점에 ESLint를 체크할 수 있습니다.</p>
-
-<h2 id="설치-방법">설치 방법</h2>
-
-<ol>
-  <li>
-    <p>허스키를 설치합니다.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code> <span class="nv">$ </span>npm install husky
-</code></pre></td></tr></tbody></table></div>    </div>
-  </li>
-  <li>
-    <p>깃 훅 테스트 방법, 아래 페키지를 작성 후 <code class="highlighter-rouge">$ git commit --allow-empty -m "husky test"</code> 명령어 실행 =&gt; 콘솔창 확인</p>
-
-    <div class="language-json highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">package.json</span><span class="w">
- </span><span class="p">{</span><span class="w">
- 	</span><span class="s2">"husky"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
- 		</span><span class="s2">"hooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
- 			</span><span class="s2">"pre-commit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo '커밋전 출력'"</span><span class="w">
- 		</span><span class="p">}</span><span class="w">
- 	</span><span class="p">}</span><span class="w">
- </span><span class="p">}</span><span class="w">
-</span></code></pre></td></tr></tbody></table></div>    </div>
-  </li>
-  <li>
-    <p>테스트 완료 후 아래로 수정</p>
-
-    <div class="language-json highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">package.json</span><span class="w">
- </span><span class="p">{</span><span class="w">
- 	</span><span class="s2">"husky"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
- 		</span><span class="s2">"hooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
- 			</span><span class="s2">"pre-commit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run lint"</span><span class="w">
- 		</span><span class="p">}</span><span class="w">
- 	</span><span class="p">}</span><span class="w">
- </span><span class="p">}</span><span class="w">
-</span></code></pre></td></tr></tbody></table></div>    </div>
-  </li>
-</ol>
-
-<h2 id="최적화">최적화</h2>
-
-<p>위 방법은 모든 소스 코드를 검사하는 방법입니다. 만약 코드가 많아져서 모든 코드를 검사하면서 커밋이 느려질 수 있는데
-이럴경우 <code class="highlighter-rouge">lint-staged</code>를 이용하여 <strong>변경(스테이징)된 파일만 린트</strong>를 수행할 수 있는 도구입니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nv">$ </span>npm install lint-staged
+    <span class="nt">&lt;script&gt;</span>
+        <span class="kd">const</span> <span class="nx">readExcel</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+            <span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+                <span class="kd">const</span> <span class="nx">workBook</span> <span class="o">=</span> <span class="nx">XLSX</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="s1">'binary'</span> <span class="p">})</span>
+                <span class="nx">workBook</span><span class="p">.</span><span class="nx">SheetNames</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">sheetName</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`sheet name : </span><span class="p">${</span><span class="nx">sheetName</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">XLSX</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sheet_to_json</span><span class="p">(</span><span class="nx">workBook</span><span class="p">.</span><span class="nx">Sheets</span><span class="p">[</span><span class="nx">sheetName</span><span class="p">])</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">};</span>
+            <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsBinaryString</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </code></pre></td></tr></tbody></table></div></div>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">package.json</span><span class="w">
-</span><span class="p">{</span><span class="w">
-	</span><span class="s2">"husky"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"hooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"pre-commit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lint-staged"</span><span class="w">
-		</span><span class="p">}</span><span class="w">
-	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"lint-staged"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"*.{js,ts}"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run lint"</span><span class="w">
-	</span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></td></tr></tbody></table></div></div>
+<h2 id="출력">출력</h2>
 
-<h2 id="에디터의-확장-프로그램을-이용한-방법">에디터의 확장 프로그램을 이용한 방법.</h2>
+<p>거의 5만개 이상의 행이 존재하는 파일로 실행해봤을때 0.2초 정도가 소요되는 퍼포먼스를 입니다.</p>
 
-<p>커밋 시점이 아닌 개발 단계에서 ESLint &amp; Prettier 적용이 가능합니다.</p>
+<p><img src="/assets/post-img/csv-file-reader-using-sheetjs/excelprintimg.png" alt="print img" /></p>
 
-<p><code class="highlighter-rouge">VS Code</code>의 ESLint와 Prettier 확장 프로그램을 설치해서 사용합니다.</p>
+<p><img src="/assets/post-img/csv-file-reader-using-sheetjs/performance.png" alt="performance" /></p>
 
-<p>사용법은 아래를 참고해주세요.</p>
+<p><br /></p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">settings.json</span><span class="w">
-</span><span class="p">{</span><span class="w">
-	</span><span class="s2">"eslint.enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">eslint</span><span class="w"> </span><span class="err">활성화</span><span class="w">
-	</span><span class="s2">"editor.codeActionsOnSave"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">저장시</span><span class="w"> </span><span class="err">eslint</span><span class="w"> </span><span class="err">규칙에</span><span class="w"> </span><span class="err">맞게</span><span class="w"> </span><span class="err">수정</span><span class="w">
-		</span><span class="s2">"source.fixAll.eslint"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-	</span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></td></tr></tbody></table></div></div>
+<h1 id="동기적-수행">동기적 수행</h1>
+
+<p><code class="highlighter-rouge">FileReader</code>의 경우 로직이 비동기로 수행되어 원하는 값을 원하는 타이밍에 <code class="highlighter-rouge">return</code> 받기가 곤란한 이슈가 발생했습니다. 따라서 이번에는 동기적으로 로직을 수행시켜 원하는 값을 받아내는 코드를 작성해 봅니다.</p>
+
+<h2 id="코드-1">코드</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46</pre></td><td class="code"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Read CSV File<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="nf">#input-box</span> <span class="p">{</span>
+            <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+            <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ddd</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"input-box"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"csv-file"</span> <span class="na">onchange=</span><span class="s">"onChageFile()"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+        <span class="kd">const</span> <span class="nx">readExcel</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+                <span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">((()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+                    <span class="kd">const</span> <span class="nx">workBook</span> <span class="o">=</span> <span class="nx">XLSX</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="s1">'binary'</span> <span class="p">})</span>
+                    <span class="k">return</span> <span class="nx">workBook</span><span class="p">.</span><span class="nx">SheetNames</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">sheetName</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">XLSX</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sheet_to_json</span><span class="p">(</span><span class="nx">workBook</span><span class="p">.</span><span class="nx">Sheets</span><span class="p">[</span><span class="nx">sheetName</span><span class="p">]);</span>
+                        <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">row</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+                    <span class="p">})[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">})());</span>
+                <span class="nx">reader</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="nx">reject</span>
+                <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsBinaryString</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="kd">const</span> <span class="nx">onChageFile</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">readExcel</span><span class="p">()</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'text'</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">size</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></td></tr></tbody></table></div></div>
 
 
       
@@ -692,19 +632,19 @@
         <div class="post-tags">
           
             
+            <a href="/tag/#/NPM" rel="tag"># NPM</a>
+          
+            
             <a href="/tag/#/JavaScript" rel="tag"># JavaScript</a>
           
             
-            <a href="/tag/#/ESLint" rel="tag"># ESLint</a>
+            <a href="/tag/#/SheetJS" rel="tag"># SheetJS</a>
           
             
-            <a href="/tag/#/Prettier" rel="tag"># Prettier</a>
+            <a href="/tag/#/Excel" rel="tag"># Excel</a>
           
             
-            <a href="/tag/#/Node.js" rel="tag"># Node.js</a>
-          
-            
-            <a href="/tag/#/VS%20Code" rel="tag"># VS Code</a>
+            <a href="/tag/#/FileReader" rel="tag"># FileReader</a>
           
         </div>
       
@@ -720,8 +660,8 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/web/2021/01/29/web-prg-pattern/" rel="next" title="[WEB] PRG 패턴">
-                <i class="fa fa-chevron-left"></i> [WEB] PRG 패턴
+              <a href="/npm/2021/02/16/make-npm-package/" rel="next" title="NPM package 만들기">
+                <i class="fa fa-chevron-left"></i> NPM package 만들기
               </a>
             
           </div>
@@ -730,8 +670,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/docker/2021/01/22/make-local-db-container-using-docker/" rel="prev" title="Docker를 사용해서 간단한 로컬 DB 셋팅">
-                Docker를 사용해서 간단한 로컬 DB 셋팅 <i class="fa fa-chevron-right"></i>
+              <a href="/vue.js/2021/02/15/startVue/" rel="prev" title="Vue.js 시작하기">
+                Vue.js 시작하기 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -931,7 +871,7 @@
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#eslint와-prettier를-사용하는-이유"> <span class="nav-number">1</span> <span class="nav-text">ESLint와 Prettier를 사용하는 이유</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#eslint-적용하기"> <span class="nav-number">2</span> <span class="nav-text">ESLint 적용하기</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#목적"> <span class="nav-number">2.1</span> <span class="nav-text">목적</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#적용-방법"> <span class="nav-number">2.2</span> <span class="nav-text">적용 방법</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#prettier-적용하기"> <span class="nav-number">3</span> <span class="nav-text">Prettier 적용하기</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#목적-1"> <span class="nav-number">3.1</span> <span class="nav-text">목적</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#적용-방법-1"> <span class="nav-number">3.2</span> <span class="nav-text">적용 방법</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#eslint--prettier"> <span class="nav-number">4</span> <span class="nav-text">ESLint + Prettier</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#git-hook을-이용한-자동화-방법"> <span class="nav-number">5</span> <span class="nav-text">Git hook을 이용한 자동화 방법</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#git-hook이란"> <span class="nav-number">5.1</span> <span class="nav-text">Git hook이란?</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#설치-방법"> <span class="nav-number">5.2</span> <span class="nav-text">설치 방법</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#최적화"> <span class="nav-number">5.3</span> <span class="nav-text">최적화</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#에디터의-확장-프로그램을-이용한-방법"> <span class="nav-number">5.4</span> <span class="nav-text">에디터의 확장 프로그램을 이용한 방법.</span> </a> </li> </ol> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#-스토리"> <span class="nav-number">1</span> <span class="nav-text">📖 스토리</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#비동기적-수행"> <span class="nav-number">2</span> <span class="nav-text">비동기적 수행</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#코드"> <span class="nav-number">2.1</span> <span class="nav-text">코드</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#출력"> <span class="nav-number">2.2</span> <span class="nav-text">출력</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#동기적-수행"> <span class="nav-number">3</span> <span class="nav-text">동기적 수행</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#코드-1"> <span class="nav-number">3.1</span> <span class="nav-text">코드</span> </a> </li> </ol> </li>
     </ol>
   </div>
             
@@ -1100,9 +1040,9 @@
       
       <script type="text/javascript">
           var disqus_config = function () {
-              this.page.url = 'http://localhost:4000/javascript/2021/01/26/eslint-prettier/';
-              this.page.identifier = '/javascript/2021/01/26/eslint-prettier/';
-              this.page.title = 'ESLint & Prettier';
+              this.page.url = 'http://localhost:4000/javascript/2021/02/16/csv-file-reader-using-sheetjs-lib/';
+              this.page.identifier = '/javascript/2021/02/16/csv-file-reader-using-sheetjs-lib/';
+              this.page.title = 'JavaScript로 엑셀 파일 읽기';
           };
           var d = document, s = d.createElement('script');
           s.src = 'https://seulgiroun-gaebalsaenghwal.disqus.com/embed.js';
