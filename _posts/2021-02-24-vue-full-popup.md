@@ -38,7 +38,7 @@ description: '모달을 만들고, 효율적으로 관리하는 방법 등을 Vu
 	<label id="modal__btn" for="modal-status"> 버튼 </label>
 	<input type="checkbox" id="modal-status" />
 	<div id="modal-wrap">
-		<div id="modal--box"></div>
+		<div id="modal-box"></div>
 		<label id="modal-bg" for="modal-status" />
 	</div>
 </div>
@@ -86,8 +86,8 @@ body,
 	opacity: 0.6;
 	z-index: 100;
 }
-#modal--box {
-	position: absolute;
+#modal-box {
+	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -110,4 +110,21 @@ body,
 
 - **#modal__btn** : 단순 버튼 모양을 만드는 코드라 설명은 넘어가겠습니다.
 
-- **#modal-bg** : 
+- **#modal-bg** : 화면 전체를 검정으로 칠하고 position fixed 를 이용해 요소를 고정해줍니다. 
+
+- **#modal-box** : 모달 박스는 실질적으로 모달이 뜨는 창입니다. 가운데 위치하기 위해서 position 고정값으로 정해주고 translate을 이용해서 가운데 지점으로 이동시깁니다. 그리고 원하는 최소 사이즈를 정해 설정합니다. 이때 **bg** 와 **box**는 다른 요소들보다 위에 떠있어야하기때문에 z-index를 다른 요소들보다 높게 설정해줍니다.
+
+- **#modal-status + #modal-wrap** : 체크박스가 체크되어있지않을때 **modal-wrap** 의 화면을 가립니다.
+
+- **modal-status:checked + #modal-wrap** : 체크박스가 체크되어있을때 **modal-wrap** 의 화면을 보여줍니다.
+
+위와 같이 코드를 작성하면 아래와 같은 화면을 볼 수 있습니다.
+
+![](/assets/post-img/vue-full-popup/html_modal.gif)
+
+이렇게 간단하게 모달을 만들어봤습니다. 생각보다 간단한 매커니즘이며 CSS와 **modal-box**를 통해 모달을 커스텀하여 사용할 수 있습니다.
+
+<br>
+
+# Vue.js에서 Modal 만들기
+
