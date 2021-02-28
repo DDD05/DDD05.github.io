@@ -120,7 +120,7 @@ body,
 
 위와 같이 코드를 작성하면 아래와 같은 화면을 볼 수 있습니다.
 
-![](/assets/post-img/vue-full-popup/html_modal.png)
+![](/assets/post-img/vue-full-popup/html_modal.gif)
 
 이렇게 간단하게 모달을 만들어봤습니다. 생각보다 간단한 매커니즘이며 CSS와 **modal-box**를 통해 모달을 커스텀하여 사용할 수 있습니다.
 
