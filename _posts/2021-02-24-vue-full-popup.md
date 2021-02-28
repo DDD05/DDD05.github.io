@@ -128,3 +128,78 @@ body,
 
 # Vue.js에서 Modal 만들기
 
+위 방법은 모달을 만들때 각각의 모달요소들을 다 만들어야하는 리소스 낭비가 생길 수 있습니다. <br>
+따라서 이번에는 전체적으로 사용할 수 있는 모달 창을 만들고 안의 내용은 파라메타값을 이용해서 동적으로 화면을 변경 할 수 있도록 해보겠습니다. <br>
+실제로 위 **modal-box**안에 어떤 값을 넣을지 동적으로 결정할 수 있다고 이해하시면됩니다.
+
+> 물론 위 HTML 방식에서도 가능하지만 컴포넌트를 이용한 방식을 이용해보겠습니다.
+
+CSS 코드는 위를 그대로 사용하시면됩니다.
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>make modal</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+            <button type="button" @click="openModal" id="modal__btn">Open Modal</button>
+            <div v-if="isOpenModal" id="modal-bg" @click.self="closeModal">
+                <component id="modal--box" :is="modalCompo"></component>
+            </div>
+        </div>
+		<script>
+			const Home = { template: '<h1>Hello World</h1>' };
+			const About = { template: "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>" };
+
+
+			const vm = new Vue({
+				el: '#app',
+				data() {
+					return {
+                        isOpenModal: false,
+                        modalCompo: null
+                    };
+				},
+                methods: {
+                    setModalCompo (pCompo) {
+                        if (pCompo === 'Home') this.modalCompo = Home
+                        else if (pCompo === 'About') this.modalCompo = About
+                        else this.modalCompo = null
+                    },
+                    openModal () {
+                        const compo = prompt('열고싶은 컴포넌트를 입력해주세요.\nex) Home, About')
+                        this.setModalCompo(compo)
+                        this.isOpenModal = true;
+                    },
+                    closeModal () {
+                        this.isOpenModal = false;
+                    }
+                }
+			});
+		</script>
+	</body>
+</html>
+```
+
+- **CDN** : Vue.js를 사용하기 위해서 CDN 링크를 넣어줍니다. <br>
+```
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+```
+
+- **modal__btn** : 모달 창을 열기위한 버튼입니다. <br>
+버튼을 클릭하면 컴포넌트를 입력할 수 있는 창을 생성하고 원하는 컴포넌트를 입력하면 **data 값의 modalCompo** 값이 변경되면서 해당 값으로 모달 창을 엽니다.
+
+- **modal-bg** : 모달 열기 버튼을 누르면 **data 값의 isOpenModal 상태값을 변경하여 v-if에 true/false 값을 통해** 모달을 열고 닫습니다.
+
+- **modal--box** : **component를 동적으로 넣을수 있도록 요소를 생성하고 :is를 통해 원하는 값을 주입하면 해당 컴포넌트가 주입되는 방식입니다.** <br>
+@click.self 이벤트를 넣은 이유는 이벤트 버블링으로인해 해당 창을 클릭시 상위 요소인 **modal-bg**의 closeModal 메소드를 실행 시키는 것을 막는 역할을 합니다.
+
+여기서는 `Home`,`About` 컴포넌트를 미리 만들어두고 모달을 열때 원하는 컴포넌트를 선택하여 여는 방식을 취합니다.
+
+![](/assets/post-img/vue-full-popup/vue_modal.gif)
