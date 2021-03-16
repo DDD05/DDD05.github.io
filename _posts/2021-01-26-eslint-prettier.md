@@ -1,4 +1,5 @@
 ---
+layout: post
 title: ESLint & Prettier
 date: 2021-01-26
 categories: JavaScript

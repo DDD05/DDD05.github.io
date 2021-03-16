@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Docker를 사용해서 간단한 로컬 DB 셋팅
 date: 2021-01-22
 categories: Docker

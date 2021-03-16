@@ -1,4 +1,5 @@
 ---
+layout: post
 title: '[WEB] PRG 패턴'
 date: 2021-01-29
 categories: Web

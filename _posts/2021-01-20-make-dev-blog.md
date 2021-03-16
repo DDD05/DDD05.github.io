@@ -1,6 +1,5 @@
 ---
-# layout: post
-# type: photo
+layout: post
 title: Vue와 CMS를 이용하여 나의 개발 블로그 만들기
 date: 2021-01-20
 categories: Utility
