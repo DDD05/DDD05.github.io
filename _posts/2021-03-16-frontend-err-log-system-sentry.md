@@ -124,7 +124,7 @@ setTimeout(() => {
 
 1. 텔레그램 봇을 만듭니다.
 
-    [텔레그램 봇을 만드는 방법](https://ddd05.github.io/messenger/2021/03/15/make-telegram-bot/)은 이전에 써놓은 포스트를 참고해주시면 좋겠습니다.
+    [텔레그램 봇을 만드는 방법](https://ddd05.github.io/integration/2021/03/15/make-telegram-bot/)은 이전에 써놓은 포스트를 참고해주시면 좋겠습니다.
 
 
 2. 에러가 Sentry에 전송되기 전에 hook을 이용해서 Error message를 telegram에 전송합니다.
